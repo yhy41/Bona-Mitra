@@ -1,0 +1,16 @@
+[
+    {"nama":"Syafiq",
+    "hobi" : "Tidur",
+    "dream":"Arsitek",
+    "gambar":"gambar.jpg"},
+
+    {"nama":"Ari",
+    "hobi" : "Marathon",
+    "dream" : "Mandor",
+    "gambar":"gambar.jpg"},
+    
+    {"nama":"Abi",
+    "hobi": "Sepak Bola",
+    "dream":"Pemain sepak bola",
+    "gambar":"gambar.jpg"}
+]
