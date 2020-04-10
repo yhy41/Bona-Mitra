@@ -17,6 +17,13 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('Home_pasien');
 	}
-
+	public function InformasiKlinik()
+	{
+    	$this->load->view('Informasi_Klinik');
+	}
+	public function Pasien()
+	{
+    	$this->load->view('Pasien');
+	}
 }
 ?>

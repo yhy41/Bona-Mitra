@@ -5,11 +5,15 @@
     background-color: red;
 
  }
- .guest{
+.guest{
     align-items: top;
     background-color: blue;
 
  }
- body{
+body{
     background: blue;
  }
+.btnbtn-primary active{
+    align-items: center;
+    
+}
