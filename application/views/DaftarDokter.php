@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Daftar Dokter</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -17,8 +17,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?= site_url('pilihan/masukpasien') ?>">Home</a></li>
-      <li><a href="#">Pasien</a></li>
-      <li><a href="#">Kamar</a></li>
+      <li><a href="#">Dokter</a></li>
+      <li><a href="#">Jadwal</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">
@@ -28,19 +28,18 @@
     </form>
   </div>
 </nav>
-<h1 style="text-align: center;">Daftar Pasien Di Klinik Bona</h1>
+<h1 style="text-align: center;">Daftar Dokter Di Klinik Bona</h1>
 
 <div class="container">
   <table class="table table-dark,table-responsive">
   <thead>
     <tr>
       <th scope="col">NO</th>
-      <th scope="col">NO Induk</th>
+      <th scope="col">NO Praktek</th>
       <th scope="col">Nama</th>
-      <th scope="col">Alamat</th>
+      <th scope="col">Spesialis</th>
       <th scope="col">NoHp</th>
-      <th scope="col">Tanggal-Masuk</th>
-      <th scope="col">Kamar</th>
+      <th scope="col">Ruangan</th> <!-- data base sama dengan kamar ?  --> 
     </tr>
   </thead>
   <tbody>
@@ -51,7 +50,6 @@
       <td>@mdo</td>
       <td>Otto</td>
       <td>Otto</td>
-      <td>Otto</td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -60,14 +58,12 @@
       <td>@fat</td>
       <td>Otto</td>
       <td>Otto</td>
-      <td>Otto</td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-      <td>Otto</td>
       <td>Otto</td>
       <td>Otto</td>
     </tr>

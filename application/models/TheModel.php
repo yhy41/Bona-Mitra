@@ -8,17 +8,9 @@ class TheModel extends CI_Model{
 	}
 	public function login($data) {
 		$this->db->where('Username', $data['Username']);
-		return ($is_available['Password'] == $data['password']);
+		$is_available = $this->db->get($this->_table)->result_array();
+		return (sizeof($is_available) > 0) &&($is_available['Password'] == $data['Password']);
 
-	}
-	public function insert_new_profle($data){
-		return $this->db->insert($this->_table, $data);
-	}
-
-	public function get_profile($username){
-		$this->db->where('username', $username);
-		$data = $this->db->get($this->_table)->result_array();
-		return $data;
 	}
 }
 ?>

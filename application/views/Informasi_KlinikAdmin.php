@@ -40,8 +40,10 @@
 </nav>
   
 <div class="container">
-  <h3>Right Aligned Navbar</h3>
-  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
+  <h3>Kami Adalah Satu Satunya Klinik yang berada di Kota Bumi Prov Lampung Utara</h3>
+  <p>Kami hanya klinik Biasa dan tidak murah</p>
+  <p>Anda sakit pasti ke kami </p>
+  <p>Bayar di muka Anjing</p>
 </div>
 
 </body>

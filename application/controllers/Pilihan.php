@@ -21,9 +21,38 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('Informasi_Klinik');
 	}
+	public function InformasiKlinikAdmin()
+	{
+    	$this->load->view('Informasi_KlinikAdmin');
+	}
 	public function Pasien()
 	{
     	$this->load->view('Pasien');
 	}
+	public function DaftarDokter()
+	{
+    	$this->load->view('DaftarDokter');
+	}
+	public function DaftarPerawat()
+	{
+    	$this->load->view('DaftarPerawat');
+	}
+	public function FormSaran()
+	{
+    	$this->load->view('FormSaran');
+	}
+	public function FormKomentar()
+	{
+    	$this->load->view('FormKomentar');
+	}
+	public function FormKritik()
+	{
+    	$this->load->view('FormKritik');
+	}
+	public function Kontak()
+	{
+    	$this->load->view('Kontak');
+	}
+
 }
 ?>

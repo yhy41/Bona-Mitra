@@ -8,6 +8,7 @@
 	</head>
 	
 	<body>
+		<h1 style="text-align: center;">LOG-IN Admin Klink Bona</h1>
 		<form action="<?= site_url('login/login') ?>" method="post">
 			<h2>Login</h2>
 			<?php if(isset($error_message)) { ?>

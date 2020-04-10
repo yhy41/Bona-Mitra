@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Form Kritik</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+  <!-- Nav -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -17,8 +17,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?= site_url('pilihan/masukpasien') ?>">Home</a></li>
-      <li><a href="#">Pasien</a></li>
-      <li><a href="#">Kamar</a></li>
+      <li><a href="#">Kritik</a></li>
+      <li><a href="#">Lihat Kritik</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">
@@ -28,51 +28,29 @@
     </form>
   </div>
 </nav>
-<h1 style="text-align: center;">Daftar Pasien Di Klinik Bona</h1>
+
+    <!-- isi -->
 
 <div class="container">
-  <table class="table table-dark,table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">NO</th>
-      <th scope="col">NO Induk</th>
-      <th scope="col">Nama</th>
-      <th scope="col">Alamat</th>
-      <th scope="col">NoHp</th>
-      <th scope="col">Tanggal-Masuk</th>
-      <th scope="col">Kamar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-    </tr>
-  </tbody>
-</table>
+  <h2>Masukan Kritik Anda Untuk Klinik Kami</h2>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="email">Nama :</label>
+      <input type="input" class="form-control" id="email" placeholder="Enter nama" name="Nama">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Email :</label>
+      <input type="email" class="form-control" id="pwd" placeholder="Enter email" name="Email">
+    </div>
+    <div class="form-group">
+      <label for="comment">Kritik :</label>
+      <textarea class="form-control" rows="5" id="Saran" name="Komentar"></textarea>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="Pernyataan"> saya menyatakan ini dengan Kondisi Normal </label>
+    </div>
+    <button type="submit" class="btn btn-default">Kirim</button>
+  </form>
 </div>
 
 </body>

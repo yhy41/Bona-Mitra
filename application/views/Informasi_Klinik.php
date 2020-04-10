@@ -21,7 +21,7 @@
         <ul class="dropdown-menu">
           <li><a href="#">Pasien</a></li>
           <li><a href="#">Dokter</a></li>
-          <li><a href="#">Administrasi</a></li>
+          <li><a href="#">Perawat</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Masukan<span class="caret"></span></a>
@@ -31,7 +31,7 @@
           <li><a href="#">Kritik</a></li>
         </ul>
       </li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Kontak</a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>

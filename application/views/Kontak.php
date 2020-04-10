@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home-Pasien</title>
+  <title>Kontak</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
           <li><a href="<?= site_url('pilihan/FormKritik') ?>">Kritik</a></li>
         </ul>
       </li>
-      <li><a href="<?= site_url('pilihan/Kontak') ?>">Kontak</a></li>
+      <li><a href="#">Kontak</a></li>
       <li><a href="#">apa ???</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
@@ -42,7 +42,7 @@
   
 <div class="container">
   <h3>Selamat datang di Klinik Bona Dan Semoga Harimu menyenangkan</h3>
-  <p>Kami hanya klinik Biasa dan tidak murah</p>
+  <p>Kontak kami</p>
 </div>
 
 </body>
