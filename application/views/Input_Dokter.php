@@ -42,12 +42,30 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?= site_url('pilihan/masuk') ?>"><span class="glyphicon glyphicon-user"></span> Ganti Akun</a></li>
       <li><a href="<?= site_url('pilihan/index') ?>"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>
+    </ul>
   </div>
 </nav>
-  
 <div class="container">
-  <h3>Input Data Dokter</h3>
-  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
+<form action="<?= site_url('input/inputdokter') ?>" method="post">
+<h2 style="text-align: center;">Input Data Dokter</h2>
+<div class="form-group">
+  <label for="usr">No Praktek :</label>
+  <input type="input" class="form-control" id="Id_dokter" name="id_dokter">
+</div>
+<div class="form-group">
+  <label for="pwd">Nama :</label>
+  <input type="input" class="form-control" id="Nama" name="nama_dokter">
+</div>
+<div class="form-group">
+  <label for="comment">Alamat:</label>
+  <textarea class="form-control" rows="5" id="Alamat" name="alamat"></textarea>
+</div>
+<div class="form-group">
+  <label for="pwd">Kontak :</label>
+  <input type="input" class="form-control" id="Kontak" name="kontak">
+</div>
+<button type="submit" class="btn btn-default">Kirim</button>
+</form>
 </div>
 
 </body>
