@@ -6,12 +6,20 @@ class Input extends CI_Controller {
 		$this->load->model('ModPilihan');
 	}
 	public function inputdokter(){
-		$data['id_dokter'] = $this->input->post('id_dokter', true);
-		$data['nama_dokter'] = $this->input->post('nama_dokter', true);
-		$data['kontak'] = $this->input->post('kontak', true);
-		$data['alamat'] = $this->input->post('alamat', true);
-		$this->ModPilihan->inputdokter($data);
-		$this->load->view('Input_Dokter');
+		
+$data = array(
+
+
+		'id_dokter' => $this->input->post('id_dokter'),
+		'nama_dokter' => $this->input->post('nama_dokter'),
+		'kontak'=> $this->input->post('kontak'),
+		'alamat' => $this->input->post('alamat'),
+        );
+
+		$cek = $this->ModPilihan->inputdokter($data);
+        if ($cek) $this->session->set_flashdata('info', 'Data Dokter Berhasil Ditambah');
+        else $this->session->setflashdata('info', 'Produk Gagal Ditambah');
+        $this->load->view('Input_Dokter'); 
 	}
 }
 ?>
