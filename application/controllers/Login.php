@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 	}
 
 	public function login(){
-		$data['Username'] = $this->input->post('username', true);
+		$data['Username'] = $this->input->post('Username', true);
 		if($this->TheModel->login($data)){
 			$_SESSION['Username'] = $data['Username'];
 			redirect('/Con_Home');

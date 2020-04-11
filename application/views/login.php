@@ -17,10 +17,10 @@
 			</div>
 			<?php } ?>
 			<div class="form-group">
-				<input type="text" class="form-control" name="username" placeholder="Username" required>
+				<input type="text" class="form-control" name="Username" placeholder="Username" required>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" name="password" placeholder="Password" required>
+				<input type="password" class="form-control" name="Password" placeholder="Password" required>
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
 			<p>Don't have an account? Register <a href="<?= site_url('register/index') ?>">here</a></p>

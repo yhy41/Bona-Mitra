@@ -19,19 +19,25 @@
       <li class="active"><a href="<?= site_url('pilihan/Home_admin')?>">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Input Data<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Input Data Pasien</a></li>
-          <li><a href="#">Input Data Dokter</a></li>
-          <li><a href="#">Input Data Perawat</a></li>
+          <li><a href="<?= site_url('pilihan/Input_Pasien') ?>">Input Data Pasien</a></li>
+          <li><a href="<?= site_url('pilihan/Input_Dokter') ?>">Input Data Dokter</a></li>
+          <li><a href="<?= site_url('pilihan/Input_Perawat') ?>">Input Data Perawat</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Aktivitas<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Pembayaran Pasien</a></li>
-          <li><a href="#">Jadwal Dokter</a></li>
-          <li><a href="#">Jadwal Perawat</a></li>
+          <li><a href="<?= site_url('pilihan/Pembayaran') ?>">Pembayaran Pasien</a></li>
+          <li><a href="<?= site_url('pilihan/Jadwal_Dokter') ?>">Jadwal Dokter</a></li>
+          <li><a href="<?= site_url('pilihan/Jadwal_Perawat') ?>">Jadwal Perawat</a></li>
         </ul>
       </li>
-      <li><a href="#">Page 2</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Kelola<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
+          <li><a href="<?= site_url('pilihan/Info_KamarAdmin') ?>">Kamar</a></li>
+          <li><a href="#">---?---</a></li>
+        </ul>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?= site_url('pilihan/masuk') ?>"><span class="glyphicon glyphicon-user"></span> Ganti Akun</a></li>
@@ -40,10 +46,8 @@
 </nav>
   
 <div class="container">
-  <h3>Kami Adalah Satu Satunya Klinik yang berada di Kota Bumi Prov Lampung Utara</h3>
-  <p>Kami hanya klinik Biasa dan tidak murah</p>
-  <p>Anda sakit pasti ke kami </p>
-  <p>Bayar di muka Anjing</p>
+  <h3>Jadwal Perawat</h3>
+  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
 </div>
 
 </body>

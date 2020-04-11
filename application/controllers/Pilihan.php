@@ -21,10 +21,7 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('Informasi_Klinik');
 	}
-	public function InformasiKlinikAdmin()
-	{
-    	$this->load->view('Informasi_KlinikAdmin');
-	}
+	
 	public function Pasien()
 	{
     	$this->load->view('Pasien');
@@ -54,5 +51,47 @@ class Pilihan extends CI_Controller {
     	$this->load->view('Kontak');
 	}
 
+// BATAS UNTUK ADMIN DI PILIHAN /////////////////////////////////////////////////////////////////////
+
+	public function Home_admin()
+	{
+    	$this->load->view('Home_admin');
+	}
+	public function InformasiKlinikAdmin()
+	{
+    	$this->load->view('Informasi_KlinikAdmin');
+	}
+	public function Input_Pasien()
+	{
+    	$this->load->view('Input_Pasien');
+	}
+	public function Input_Dokter()
+	{
+    	$this->load->view('Input_Dokter');
+	}
+	public function Input_Perawat()
+	{
+    	$this->load->view('Input_Perawat');
+	}
+	public function Jadwal_Dokter()
+	{
+    	$this->load->view('Jadwal_Dokter');
+	}
+	public function Jadwal_Perawat()
+	{
+    	$this->load->view('Jadwal_Perawat');
+	}
+	public function Pembayaran()
+	{
+    	$this->load->view('Pembayaran');
+	}
+	public function Pemeriksaan()
+	{
+    	$this->load->view('Pembayaran');
+	}
+	public function Info_KamarAdmin()
+	{
+    	$this->load->view('Info_KamarAdmin');
+	}
 }
 ?>
