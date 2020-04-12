@@ -9,6 +9,7 @@ class Input extends CI_Controller {
 		$this->load->view('Input_Dokter');
 	}
 	public function inputdokter(){
+<<<<<<< HEAD
 		$data['namaDokter'] = $this->input->post('nama_dokter', true);
 		$data['kontak'] = $this->input->post('kontak', true);
 		$data['alamat'] = $this->input->post('alamat', true);
@@ -16,6 +17,22 @@ class Input extends CI_Controller {
 		if ($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
 		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
 		redirect('input');
+=======
+		
+$data = array(
+
+
+		'id_dokter' => $this->input->post('id_dokter'),
+		'nama_dokter' => $this->input->post('nama_dokter'),
+		'kontak'=> $this->input->post('kontak'),
+		'alamat' => $this->input->post('alamat'),
+        );
+
+		$cek = $this->ModPilihan->inputdokter($data);
+        if ($cek) $this->session->set_flashdata('info', 'Data Dokter Berhasil Ditambah');
+        else $this->session->setflashdata('info', 'Produk Gagal Ditambah');
+        $this->load->view('Input_Dokter'); 
+>>>>>>> c45413758a9e575c04d6605a33b9dec0408fe97b
 	}
 }
 ?>
