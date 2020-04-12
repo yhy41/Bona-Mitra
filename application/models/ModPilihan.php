@@ -6,16 +6,9 @@ class ModPilihan extends CI_Model {
         parent::__construct(); 
     
     }
-    public function inputdokter()
+    public function inputdokter($data)
 	{
-		$data = [
-			"id_dokter" => $this->input->post('id_dokter', true),
-			"nama_dokter" => $this->input->post('nama_dokter', true),
-			"kontak" => $this->input->post('kontak', true),
-			"alamat" => $this->input->post('alamat', true),
-		];
 		return $this->db->insert('dokter', $data);
-		//use query builder to insert $data to table "mahasiswa"
 	}
 
  

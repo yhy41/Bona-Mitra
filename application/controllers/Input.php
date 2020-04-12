@@ -5,13 +5,17 @@ class Input extends CI_Controller {
 		parent::__construct();
 		$this->load->model('ModPilihan');
 	}
+	public function index(){
+		$this->load->view('Input_Dokter');
+	}
 	public function inputdokter(){
-		$data['id_dokter'] = $this->input->post('id_dokter', true);
-		$data['nama_dokter'] = $this->input->post('nama_dokter', true);
+		$data['namaDokter'] = $this->input->post('nama_dokter', true);
 		$data['kontak'] = $this->input->post('kontak', true);
 		$data['alamat'] = $this->input->post('alamat', true);
-		$this->ModPilihan->inputdokter($data);
-		$this->load->view('Input_Dokter');
+		$cek = $this->ModPilihan->inputdokter($data);
+		if ($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
+		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
+		redirect('input');
 	}
 }
 ?>

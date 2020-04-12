@@ -19,7 +19,8 @@ class Login extends CI_Controller {
 			$_SESSION['Username'] = $data['Username'];
 			redirect('/Con_Home');
 		} else {
-			$_SESSION['error_message'] = 'Login gagal';
+			redirect('/login');
+			$this->session->set_flashdata('info','Gagal Login!');
 		}
 
 	}
