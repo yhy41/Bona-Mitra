@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Ubah Dokter</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -56,19 +56,19 @@
 <?php endif; ?>
 <!-- bagian akhir flash info -->
 <div class="container">
-<form action="<?= site_url('input/inputdokter') ?>" method="post">
-<h2 style="text-align: center;">Input Data Dokter</h2>
+<form action="<?= site_url('dokter/Ubah').'/'.$dokter['id_dokter'] ?>" method="post">
+<h2 style="text-align: center;">Ubah Data Dokter</h2>
 <div class="form-group">
   <label for="pwd">Nama :</label>
-  <input type="input" class="form-control" id="Nama" name="nama_dokter" required="required">
+  <input type="input" class="form-control" id="Nama" name="nama_dokter" value="<?=$dokter['nama_dokter'] ?>"  required="required">
 </div>
 <div class="form-group">
   <label for="comment">Alamat:</label>
-  <textarea class="form-control" rows="5" id="Alamat" name="alamat" required="required"></textarea>
+  <textarea class="form-control" rows="5" id="Alamat" name="alamat"  required="required"><?=$dokter['alamat'] ?></textarea>
 </div>
 <div class="form-group">
   <label for="pwd">Kontak :</label>
-  <input type="input" class="form-control" id="Kontak" name="kontak" required="required">
+  <input type="input" class="form-control" id="Kontak" name="kontak" value="<?=$dokter['kontak'] ?>" required="required">
 </div>
 <button type="submit" class="btn btn-primary">Kirim</button>
 <a href="<?= site_url('dokter/LihatDokter') ?>" class="btn btn-primary">Back</a>

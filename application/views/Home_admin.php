@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Home Admin</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Input Data<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="<?= site_url('pilihan/Input_Pasien') ?>">Input Data Pasien</a></li>
-          <li><a href="<?= site_url('pilihan/Input_Dokter') ?>">Input Data Dokter</a></li>
+          <li><a href="<?= site_url('dokter/LihatDokter') ?>">Input Data Dokter</a></li>
           <li><a href="<?= site_url('pilihan/Input_Perawat') ?>">Input Data Perawat</a></li>
         </ul>
       </li>
@@ -35,7 +35,9 @@
         <ul class="dropdown-menu">
           <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
           <li><a href="<?= site_url('pilihan/Info_KamarAdmin') ?>">Kamar</a></li>
-          <li><a href="#">---?---</a></li>
+          <li><a href="#">Lihat Saran</a></li>
+          <li><a href="#">Lihat Komentar</a></li>
+           <li><a href="#">Lihat Kritik</a></li>
         </ul>
       </li>
     </ul>

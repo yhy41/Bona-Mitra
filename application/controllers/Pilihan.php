@@ -15,7 +15,7 @@ class Pilihan extends CI_Controller {
 	}
 	public function masukpasien()
 	{
-    	$this->load->view('Home_pasien');
+    	$this->load->view('home\Home_pasien');
 	}
 	public function InformasiKlinik()
 	{
@@ -55,7 +55,7 @@ class Pilihan extends CI_Controller {
 
 	public function Home_admin()
 	{
-    	$this->load->view('Home_admin');
+    	$this->load->view('home\Home_admin');
 	}
 	public function InformasiKlinikAdmin()
 	{
@@ -65,18 +65,41 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('Input_Pasien');
 	}
+
+
+
+
 	public function Input_Dokter()
 	{
-    	$this->load->view('Input_Dokter');
+		$data['judul'] = 'Daftar Dokter';
+		$data['dokter'] = $this->ModPilihan->getAllDokter();
+		if ($this->input->post('keyword')) {
+			$data['dokter'] = $this->ModPilihan->cariDataDokter();
+		}
+
+    	$this->load->view('LihatDokter',$data);
+
+
 	}
-	public function Input_Perawat()
+	public function Tambah_Dokter()
 	{
-    	$this->load->view('Input_Perawat');
+    	$this->load->view('Input_Dokter');
+
 	}
 	public function Jadwal_Dokter()
 	{
     	$this->load->view('Jadwal_Dokter');
 	}
+
+
+
+
+	
+	public function Input_Perawat()
+	{
+    	$this->load->view('Input_Perawat');
+	}
+	
 	public function Jadwal_Perawat()
 	{
     	$this->load->view('Jadwal_Perawat');

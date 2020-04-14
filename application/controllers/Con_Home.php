@@ -8,7 +8,7 @@ class Con_Home extends CI_Controller {
 	public function index()
 	{
 		if(isset($_SESSION['Username'])){
-			$this->load->view('Home_admin');
+			$this->load->view('home\Home_admin');
 		} else {
 			redirect('Login/index');
 		}

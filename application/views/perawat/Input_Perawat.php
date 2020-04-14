@@ -42,10 +42,13 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?= site_url('pilihan/masuk') ?>"><span class="glyphicon glyphicon-user"></span> Ganti Akun</a></li>
       <li><a href="<?= site_url('pilihan/index') ?>"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>
-    </ul>
   </div>
 </nav>
-<!-- bagian flash info -->
+  
+<div class="container">
+  
+
+  <!-- bagian flash info -->
 <?php if ($this->session->flashdata('info')) : ?>
   <div class="alert alert-success alert-dismissible show" role="alert">
     <strong><?= $this->session->flashdata('info'); ?>.</strong>
@@ -56,11 +59,11 @@
 <?php endif; ?>
 <!-- bagian akhir flash info -->
 <div class="container">
-<form action="<?= site_url('input/inputdokter') ?>" method="post">
-<h2 style="text-align: center;">Input Data Dokter</h2>
+<form action="<?= site_url('input/inputperawat') ?>" method="post">
+<h2 style="text-align: center;">Input Data Perawat</h2>
 <div class="form-group">
   <label for="pwd">Nama :</label>
-  <input type="input" class="form-control" id="Nama" name="nama_dokter" required="required">
+  <input type="input" class="form-control" id="Nama" name="nama_perawat" required="required">
 </div>
 <div class="form-group">
   <label for="comment">Alamat:</label>
@@ -71,7 +74,7 @@
   <input type="input" class="form-control" id="Kontak" name="kontak" required="required">
 </div>
 <button type="submit" class="btn btn-primary">Kirim</button>
-<a href="<?= site_url('dokter/LihatDokter') ?>" class="btn btn-primary">Back</a>
+<a href="<?= site_url('perawat/LihatPerawat') ?>" class="btn btn-primary">Back</a>
 </form>
 </div>
 

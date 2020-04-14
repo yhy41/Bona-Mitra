@@ -56,7 +56,7 @@
 <?php endif; ?>
 <!-- bagian akhir flash info -->
 <div class="container">
-<form action="<?= site_url('input/inputdokter') ?>" method="post">
+<form action="<?= site_url('Input/inputdokter') ?>" method="post">
 <h2 style="text-align: center;">Input Data Dokter</h2>
 <div class="form-group">
   <label for="pwd">Nama :</label>
