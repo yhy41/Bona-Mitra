@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Lihat</title>
@@ -8,8 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body> -->
 
+
+<?php $this->load->view("template/header.php") ?>
+<?php $this->load->view("template/navbar.php") ?>
 <div class="container">
     <?php if ($this->session->flashdata('flash')) : ?>
     <div class="row mt-3">
@@ -79,7 +82,4 @@
 
         </div>
     </div>
-</div> 
-
-</body>
-</html>
+<?php $this->load->view("template/footer.php") ?>

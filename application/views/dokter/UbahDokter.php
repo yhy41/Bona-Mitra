@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Ubah Dokter</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<nav class="navbar navbar-inverse">
+<?php $this->load->view("template/header.php") ?>
+<?php $this->load->view("template/navbar.php") ?>
+<!-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="<?= site_url('pilihan/InformasiKlinikAdmin') ?>">Klinik Bona</a>
@@ -44,7 +34,7 @@
       <li><a href="<?= site_url('pilihan/index') ?>"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>
     </ul>
   </div>
-</nav>
+</nav> -->
 <!-- bagian flash info -->
 <?php if ($this->session->flashdata('info')) : ?>
   <div class="alert alert-success alert-dismissible show" role="alert">
@@ -55,9 +45,10 @@
   </div>
 <?php endif; ?>
 <!-- bagian akhir flash info -->
+
 <div class="container">
 <form action="<?= site_url('dokter/Ubah').'/'.$dokter['id_dokter'] ?>" method="post">
-<h2 style="text-align: center;">Ubah Data Dokter</h2>
+<h2 style="text-align: center;">Ubah Data </h2>
 <div class="form-group">
   <label for="pwd">Nama :</label>
   <input type="input" class="form-control" id="Nama" name="nama_dokter" value="<?=$dokter['nama_dokter'] ?>"  required="required">
@@ -72,8 +63,5 @@
 </div>
 <button type="submit" class="btn btn-primary">Kirim</button>
 <a href="<?= site_url('dokter/LihatDokter') ?>" class="btn btn-primary">Back</a>
-</form>
-</div>
 
-</body>
-</html>
+<?php $this->load->view("template/footer.php") ?>
