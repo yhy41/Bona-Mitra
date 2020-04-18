@@ -22,7 +22,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Kelola<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
-          <li><a href="<?= site_url('pilihan/Info_KamarAdmin') ?>">Kamar</a></li>
+          <li><a href="<?= site_url('kamar') ?>">Kamar</a></li>
           <li><a href="#">Lihat Saran</a></li>
           <li><a href="#">Lihat Komentar</a></li>
            <li><a href="#">Lihat Kritik</a></li>

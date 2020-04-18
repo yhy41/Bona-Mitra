@@ -83,5 +83,24 @@ class Input extends CI_Controller {
 		redirect('input/pasien');
 
 	}
+
+	public function kamar(){
+		
+		$data['judul'] = 'Daftar Kamar';
+		$data['kamar_inap'] = $this->ModPilihan->getAllKamar();
+		if ($this->input->post('keyword')) {
+			$data['kamar_inap'] = $this->ModPilihan->cariDataKamar();
+		}
+		$this->load->view('kamar\tambah',$data);
+	}
+
+	public function inputkamar(){
+		$data['nama_kamar'] = $this->input->post('nama_kamar', true);
+		$cek = $this->ModPilihan->addDataKamar($data);
+		if ($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
+		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
+		redirect('kamar');
+
+	}
 }
 ?>

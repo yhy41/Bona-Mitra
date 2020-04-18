@@ -142,7 +142,48 @@ class ModPilihan extends CI_Model {
 	{
 		return $this->db->insert('feedback', $data);
 	}
- }
 
- 
+	/////////////////////////////////////////////////KAMAR///////////////////////////////////////////////////////////
+	public function getAllKamar()
+	{
+		return $this->db->get('kamar_inap')->result_array();
+	}
+
+	public function getKamarById($id_kamar)
+	{
+		$this->db->where('id_kamar', $id_kamar);
+		return $this->db->get('kamar_inap')->row_array();
+	}
+
+	public function addDataKamar()
+	{
+		$data = [
+			"nama_kamar" => $this->input->post('nama_kamar', true),
+		];
+		return $this->db->insert('kamar_inap', $data);
+	}
+
+	public function deleteDataKamar($id_kamar)
+	{
+		$this->db->where('id_kamar', $id_kamar);
+		return $this->db->delete('kamar_inap');
+	}
+
+	public function changeDataKamar($id_kamar)
+	{
+		$data = [
+			"nama_kamar" => $this->input->post('nama_kamar', true),
+		];
+		$this->db->where('id_kamar', $id_kamar);
+		return $this->db->update('kamar_inap', $data);
+	}
+
+	public function searchDataKamar()
+	{
+		$keyword = $this->input->post('keyword', true);
+		$where = "nama_kamar='$keyword'";
+		$this->db->where($where);
+		return $this->db->get('kamar_inap')->result_array();
+	}
+ }
 ?>

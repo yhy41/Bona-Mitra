@@ -27,11 +27,21 @@ class Pilihan extends CI_Controller {
 	}
 	public function DaftarDokter()
 	{
-    	$this->load->view('Info_Guest\DaftarDokter');
+		$data['dokter'] = $this->ModPilihan->getAllDokter();
+		if ($this->input->post('keyword')) {
+			$data['dokter'] = $this->ModPilihan->cariDataDokter();
+		}
+
+    	$this->load->view('Info_Guest\DaftarDokter',$data);
 	}
 	public function DaftarPerawat()
 	{
-    	$this->load->view('Info_Guest\DaftarPerawat');
+		$data['perawat'] = $this->ModPilihan->getAllPerawat();
+		if ($this->input->post('keyword')) {
+			$data['perawat'] = $this->ModPilihan->cariDataPerawat();
+		}
+
+    	$this->load->view('Info_Guest\DaftarPerawat',$data);
 	}
 	public function FormSaran()
 	{
@@ -113,7 +123,11 @@ class Pilihan extends CI_Controller {
 	}
 	public function Info_KamarAdmin()
 	{
-    	$this->load->view('Info_KamarAdmin');
+		$data['kamar_inap'] = $this->ModPilihan->getAllKamar();
+		if ($this->input->post('keyword')) {
+			$data['kamar_inap'] = $this->ModPilihan->cariDataKamar();
+		}
+    	$this->load->view('Info_KamarAdmin',$data);
 	}
 }
 ?>
