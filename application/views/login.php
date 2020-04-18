@@ -5,6 +5,24 @@
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/style.css'); ?>"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Login</title>
+		<style type="text/css">
+			h1{
+				font-family: fantasy;
+				text-transform: uppercase;
+				color: #5F9EA0;
+				text-shadow: 3px 3px 0px #D7DACC, 8px 8px 0px rgba(0, 0, 0, 0.1);
+			}
+			h2{
+				font-family: sans-serif;
+				font-weight: bold;
+			}
+			body{
+				background: url("<?php echo base_url()?>assets/dokter3.jpg") no-repeat;
+     		    background-size: 100% 100%;
+                width: 100%;
+                height: 100%;
+			}
+		</style>
 	</head>
 	
 	<body>

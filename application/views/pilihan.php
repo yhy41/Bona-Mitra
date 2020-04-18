@@ -15,6 +15,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Klinik Bona</title>
+    <style type="text/css">
+      body{
+        background: url("<?php echo base_url()?>assets/dokter4.jpg") no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        height: 100%;
+      }
+      h1{
+        font-family: fantasy;
+        text-transform: uppercase;
+        color: #5F9EA0;
+        text-shadow: 3px 3px 0px #D7DACC, 8px 8px 0px rgba(0, 0, 0, 0.1);
+        font-size: 350%;
+      }
+      p{
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
     <div class="pos-f-t">

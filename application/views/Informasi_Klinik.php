@@ -7,6 +7,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    body{
+      background: url("<?php echo base_url()?>assets/dokter6.jpg") no-repeat;
+    }
+      h3{
+      font-family: fantasy;
+      text-transform: uppercase;
+      color: #008B8B;
+    }
+  </style>
 </head>
 <body>
 
@@ -38,10 +48,10 @@
 </nav>
   
 <div class="container">
-  <h3>Kami Adalah Satu Satunya Klinik yang berada di Kota Bumi Prov Lampung Utara</h3>
-  <p>Kami hanya klinik Biasa dan tidak murah</p>
-  <p>Anda sakit pasti ke kami </p>
-  <p>Bayar di muka Anjing</p>
+  <h3>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</h3>
+  <p>Kami Hadir Untuk Anda</p>
+  <p>Anda Adalah Prioritas Kami</p>
+  <p>Kesehatan Masyarakat Hal Yang Paling Penting</p>
 </div>
 
 </body>

@@ -1,5 +1,15 @@
 <?php $this->load->view("template_Info/header.php") ?>
 <?php $this->load->view("template_Info/navbar.php") ?>
+<style type="text/css">
+  body{
+    background: url("<?php echo base_url()?>assets/dokter7.jpg") no-repeat;
+  }
+  h1{
+      font-family: fantasy;
+      text-transform: uppercase;
+      color: #008B8B;
+  }
+</style>
 
 <h1 style="text-align: center;">Daftar Dokter Di Klinik Bona</h1>
 

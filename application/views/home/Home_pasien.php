@@ -44,6 +44,10 @@
 <?php $this->load->view("template_Guest/navbar.php") ?>
   
 <div class="container">
-  <h3>Selamat datang di Klinik Bona Dan Semoga Harimu menyenangkan</h3>
-  <p>Kami hanya klinik Biasa dan tidak murah</p>
+  <h3>Selamat Datang di Klinik Bona. Kami Melayani Anda Dengan Penuh Kasih, Ikhlas, dan Bertanggung Jawab</h3>
+  <p>Berintegritas</p>
+  <p>Profesional</p>
+  <p>Teliti</p>
+  <p>Cepat</p>
+  <p>Tanggap</p>
 <?php $this->load->view("template_Guest/footer.php") ?>
