@@ -21,34 +21,33 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('Informasi_Klinik');
 	}
-	
 	public function Pasien()
 	{
-    	$this->load->view('Pasien');
+    	$this->load->view('Info_Guest\Pasien');
 	}
 	public function DaftarDokter()
 	{
-    	$this->load->view('DaftarDokter');
+    	$this->load->view('Info_Guest\DaftarDokter');
 	}
 	public function DaftarPerawat()
 	{
-    	$this->load->view('DaftarPerawat');
+    	$this->load->view('Info_Guest\DaftarPerawat');
 	}
 	public function FormSaran()
 	{
-    	$this->load->view('FormSaran');
+    	$this->load->view('masukan\FormSaran');
 	}
 	public function FormKomentar()
 	{
-    	$this->load->view('FormKomentar');
+    	$this->load->view('masukan\FormKomentar');
 	}
 	public function FormKritik()
 	{
-    	$this->load->view('FormKritik');
+    	$this->load->view('masukan\FormKritik');
 	}
 	public function Kontak()
 	{
-    	$this->load->view('Kontak');
+    	$this->load->view('Guest\Kontak');
 	}
 
 // BATAS UNTUK ADMIN DI PILIHAN /////////////////////////////////////////////////////////////////////

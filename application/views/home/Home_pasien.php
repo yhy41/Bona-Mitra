@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Home-Pasien</title>
@@ -38,12 +38,12 @@
       <li><a href="<?= site_url('pilihan/index') ?>"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+<?php $this->load->view("template_Guest/header.php") ?>
+<?php $this->load->view("template_Guest/navbar.php") ?>
   
 <div class="container">
   <h3>Selamat datang di Klinik Bona Dan Semoga Harimu menyenangkan</h3>
   <p>Kami hanya klinik Biasa dan tidak murah</p>
-</div>
-
-</body>
-</html>
+<?php $this->load->view("template_Guest/footer.php") ?>

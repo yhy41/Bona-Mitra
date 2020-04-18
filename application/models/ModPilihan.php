@@ -136,5 +136,13 @@ class ModPilihan extends CI_Model {
 		return $this->db->get('pasien')->result_array();
 		//return data mahasiswa that has been searched
 	}
+
+	/////////////////////////////////////////////Guest////////
+ public function masukanSKK($data)
+	{
+		return $this->db->insert('feedback', $data);
+	}
  }
+
+ 
 ?>
