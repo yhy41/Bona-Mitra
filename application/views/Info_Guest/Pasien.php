@@ -13,52 +13,48 @@
 
 <h1 style="text-align: center;">Daftar Pasien Di Klinik Bona</h1>
 
-<div class="container">
+<div class = "container">
+  <div class="col md-6">
+    <form action="" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Cari Pasien ... " name="keyword">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Cari</button>
+          </div>
+      </div>
+    </form>
+  </div>
+  <?php if (empty($pasien)) : ?>
+            <div class="alert alert-danger" role="alert">
+                Data tidak ditemukan
+            </div>
+  <?php endif; ?>
+
   <table class="table table-dark,table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">NO</th>
-      <th scope="col">NO Induk</th>
-      <th scope="col">Nama</th>
-      <th scope="col">Alamat</th>
-      <th scope="col">NoHp</th>
-      <th scope="col">Tanggal-Masuk</th>
-      <th scope="col">Kamar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-    </tr>
-  </tbody>
-</table>
-   <div class="row mt-3">
+    <thead>
+      <tr>
+          <th class="text-center" scope="col">Nama</th>
+          <th class="text-center" scope="col">Tanggal Lahir</th>
+          <th class="text-center" scope="col">Alamat</th>
+          <th class="text-center" scope="col">Email</th>
+          <th class="text-center" scope="col">Kontak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><?php foreach ($pasien as $ps) : ?>
+          <td class="text-center"><?= $ps['nama_pasien']; ?></td>
+          <td class="text-center"><?= $ps['tanggal_lahir']; ?></td>
+          <td class="text-center"><?= $ps['alamat']; ?></td>
+          <td class="text-center"><?= $ps['email']; ?></td>
+          <td class="text-center"><?= $ps['kontak']; ?></td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+
+   <!-- <div class="row mt-3">
                 <div class="col md-6 text-center mt-5">
                     <a href="<?= site_url('pasien/TambahPasien') ?>" class="btn btn-primary">Info Kamar Pasien</a>
-                </div>
-  </div>
+                </div> -->
+</div>
 <?php $this->load->view("template_Info/footer.php") ?>

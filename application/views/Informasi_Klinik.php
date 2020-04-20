@@ -27,7 +27,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?= site_url('pilihan/masukpasien') ?>">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
+      <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Pasien</a></li>
           <li><a href="#">Dokter</a></li>
@@ -42,17 +42,31 @@
         </ul>
       </li>
       <li><a href="#">Kontak</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="#">Page 3</a></li> -->
     </ul>
   </div>
 </nav>
-  
-<div class="container">
+<div class = "container bg-dark text-white">
+  <img src="<?php echo base_url()?>assets/dokter1.jfif" alt="logo" class="img-thumbnail">
+  <h1 class="display-3">Tentang Kami</h1>
+  <p>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</p>
+  <p>Klinik ini berdiri pada tahun 2020 karena tuntutan tugas dari dosen mata kuliah pemrograman web</p>
+</div>
+<!-- <div class="media">
+  <img src="<?php echo base_url()?>assets/dokter1.jfif" class="align-self-center mr-3" alt="logo">
+  <div class="media-body">
+    <h5 class="mt-0">Tentang Kami</h5>
+    <p>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</p>
+    <p class="mb-0">Klinik ini berdiri pada tahun 2020 karena tuntutan tugas dari dosen mata kuliah pemrograman web</p>
+  </div>
+</div> -->
+
+<!-- <div class="container">
   <h3>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</h3>
   <p>Kami Hadir Untuk Anda</p>
   <p>Anda Adalah Prioritas Kami</p>
   <p>Kesehatan Masyarakat Hal Yang Paling Penting</p>
-</div>
+</div> -->
 
 </body>
 </html>

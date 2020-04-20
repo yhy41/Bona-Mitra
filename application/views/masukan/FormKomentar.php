@@ -15,15 +15,39 @@
     <!-- isi -->
 
 <div class="container">
-  <h2>Masukan Komentar Anda Untuk Klinik Kami</h2>
+  <h2>Feedback Dari Anda Sangat Berharga Bagi Klinik Kami</h2>
+  <?php if ($this->session->flashdata('info')) : ?>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="alert alert-success alert-dismissible show" role="alert">
+                <?= $this->session->flashdata('info'); ?>.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
   <form action="<?= site_url('Input_Masukan/feedback') ?>" method="post">
     <div class="form-group">
       <label for="email">Nama :</label>
       <input type="input" class="form-control" id="email" placeholder="Enter nama" name="nama_tamu">
     </div>
     <div class="form-group">
-      <label for="pwd">Masukan :</label>
-      <div class="dropdown">
+      <label for="pwd">Kategori :</label>
+      <div class="form-check-inline">
+        <?= form_radio('kategori','Saran','true', ['class'=>'form-check-input']) ?>
+        Saran
+      </div>
+      <div class="form-check-inline">
+        <?= form_radio('kategori','Kritik','', ['class'=>'form-check-input']) ?>
+        Kritik
+      </div>
+      <div class="form-check-inline">
+        <?= form_radio('kategori','Komentar','', ['class'=>'form-check-input']) ?>
+        Komentar
+      </div>
+      <!-- <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pilih
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
@@ -31,7 +55,7 @@
             <li><a id="Komentar" name="kategori" value="Komentar" >Komentar</a></li>
             <li><a id="Kritik" name="kategori" value="Kritik">Kritik</a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
   
     <div class="form-group">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Home Admin</title>
@@ -23,15 +23,17 @@
       <li><a href="<?= site_url('pilihan/masuk') ?>"><span class="glyphicon glyphicon-user"></span> Ganti Akun</a></li>
       <li><a href="<?= site_url('pilihan/index') ?>"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>
   </div>
-</nav>
-  
+</nav> -->
+<?php $this->load->view("template/header.php") ?>
+<?php $this->load->view("template/navbar.php") ?>
+
 <div class="container">
   <h3 class="text-center">Informasi Kamar</h3>
-  <?php if ($this->session->flashdata('flash')) : ?>
+  <?php if ($this->session->flashdata('info')) : ?>
     <div class="row mt-3">
         <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                Data Kamar <strong>berhasil</strong> <?= $this->session->flashdata('flash'); ?>.
+            <div class="alert alert-success alert-dismissible show" role="alert">
+                Data Kamar <strong>berhasil</strong> <?= $this->session->flashdata('info'); ?>.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

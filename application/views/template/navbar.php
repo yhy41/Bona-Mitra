@@ -14,18 +14,18 @@
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Aktivitas<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<?= site_url('pilihan/Pembayaran') ?>">Pembayaran Pasien</a></li>
-          <li><a href="<?= site_url('pilihan/Jadwal_Dokter') ?>">Jadwal Dokter</a></li>
-          <li><a href="<?= site_url('pilihan/Jadwal_Perawat') ?>">Jadwal Perawat</a></li>
+          <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
+          <li><a href="<?= site_url('pilihan/Rawat Inap') ?>">Rawat Inap</a></li>
+          <li><a href="<?= site_url('plotting') ?>">Plotting Dokter</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Kelola<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
+          <li><a href="<?= site_url('pilihan/jadwal') ?>">Jadwal Dokter</a></li>
           <li><a href="<?= site_url('kamar') ?>">Kamar</a></li>
-          <li><a href="#">Lihat Saran</a></li>
-          <li><a href="#">Lihat Komentar</a></li>
-           <li><a href="#">Lihat Kritik</a></li>
+          <li><a href="<?= site_url('feedback/saran') ?>">Lihat Saran</a></li>
+          <li><a href="<?= site_url('feedback/komentar') ?>">Lihat Komentar</a></li>
+           <li><a href="<?= site_url('feedback/kritik') ?>">Lihat Kritik</a></li>
         </ul>
       </li>
     </ul>

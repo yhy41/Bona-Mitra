@@ -1,11 +1,11 @@
 <?php $this->load->view("template/header.php") ?>
 <?php $this->load->view("template/navbar.php") ?>
 <div class="container">
-    <?php if ($this->session->flashdata('flash')) : ?>
+    <?php if ($this->session->flashdata('info')) : ?>
     <div class="row mt-3">
         <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                Data Dokter <strong>berhasil</strong> <?= $this->session->flashdata('flash'); ?>.
+            <div class="alert alert-success alert-dismissible show" role="alert">
+                <?= $this->session->flashdata('info'); ?>.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -40,9 +40,9 @@
             <table class="table mt-5">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">NoId</th>
+                        <!-- <th class="text-center" scope="col">NoId</th> -->
                         <th class="text-center" scope="col">Nama</th>
-                        <th class="text-center" scope="col">Tanggal_Lahir</th>
+                        <th class="text-center" scope="col">Tanggal Lahir</th>
                         <th class="text-center" scope="col">Alamat</th>
                         <th class="text-center" scope="col">Email</th>
                         <th class="text-center" scope="col">Kontak</th>
@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                     <tr><?php foreach ($pasien as $ps) : ?>
-                        <td class="text-center"><?= $ps['id_pasien']; ?></td>
+                        <!-- <td class="text-center"><?= $ps['id_pasien']; ?></td> -->
                         <td class="text-center"><?= $ps['nama_pasien']; ?></td>
                         <td class="text-center"><?= $ps['tanggal_lahir']; ?></td>
                         <td class="text-center"><?= $ps['alamat']; ?></td>
@@ -67,7 +67,7 @@
             </table>
             <div class="row mt-3">
                 <div class="col md-6 text-center mt-5">
-                    <a href="<?= site_url('pasien/TambahPasien') ?>" class="btn btn-primary">Tambah Data Dokter</a>
+                    <a href="<?= site_url('pasien/TambahPasien') ?>" class="btn btn-primary">Tambah Data Pasien</a>
                 </div>
             </div>
 

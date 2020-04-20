@@ -23,7 +23,11 @@ class Pilihan extends CI_Controller {
 	}
 	public function Pasien()
 	{
-    	$this->load->view('Info_Guest\Pasien');
+    	$data['pasien'] = $this->ModPilihan->getAllPasien();
+    	if($this->input->post('keyword')) {
+    		$data['pasien'] = $this->ModPilihan->cariDataPasien();
+    	}
+    	$this->load->view('Info_Guest\Pasien',$data);
 	}
 	public function DaftarDokter()
 	{
@@ -128,6 +132,17 @@ class Pilihan extends CI_Controller {
 			$data['kamar_inap'] = $this->ModPilihan->cariDataKamar();
 		}
     	$this->load->view('Info_KamarAdmin',$data);
+	}
+
+	public function Jadwal()
+	{
+		$data['jadwal'] = 'Jadwal Dokter';
+		$data['jadwal'] = $this->ModPilihan->getAllJadwal();
+		if ($this->input->post('keyword')) {
+			$data['jadwal'] = $this->ModPilihan->cariJadwal();
+		}
+		$this->load->view('jadwal\Lihat_Jadwal',$data);
+
 	}
 }
 ?>

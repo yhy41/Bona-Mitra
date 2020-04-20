@@ -29,9 +29,9 @@ class Input_Masukan extends CI_Controller {
 		$data['kategori'] = $this->input->post('kategori', true);
 		$data['isi'] = $this->input->post('isi', true);
 		$cek = $this->ModPilihan->masukanSKK($data);
-		if ($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
-		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
-		redirect('Input_Masukan/masukan');
+		if ($cek) $this->session->set_flashdata('info','Feedback berhasil dikirim!');
+		else $this->session->set_flashdata('info','Feedback gagal dikirim!');
+		redirect('pilihan/FormKomentar');
 	}
 
 		

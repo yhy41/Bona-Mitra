@@ -17,7 +17,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?= site_url('pilihan/Home_admin')?>">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Input Data<span class="caret"></span></a>
+      <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Input Data<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Input Data Pasien</a></li>
           <li><a href="#">Input Data Dokter</a></li>
@@ -31,7 +31,7 @@
           <li><a href="#">Jadwal Perawat</a></li>
         </ul>
       </li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 2</a></li> -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?= site_url('pilihan/masuk') ?>"><span class="glyphicon glyphicon-user"></span> Ganti Akun</a></li>

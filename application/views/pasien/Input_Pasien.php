@@ -9,7 +9,7 @@
   <input type="input" class="form-control" id="Nama" name="nama_pasien" required="required">
 </div>
 <div class="form-group">
-  <label for="pwd">tanggal lahir:</label>
+  <label for="pwd">Tanggal Lahir (YY/MM/DD):</label>
   <input type="input" id="tanggal_lahir" class="form-control" name="tanggal_lahir" required="required">
 </div>
 <div class="form-group">
@@ -25,6 +25,6 @@
   <input type="input" class="form-control" id="Kontak" name="kontak" required="required">
 </div>
 <button type="submit" class="btn btn-primary">Kirim</button>
-<a href="<?= site_url('dokter/LihatDokter') ?>" class="btn btn-primary">Back</a>
+<a href="<?= site_url('pasien/LihatPasien') ?>" class="btn btn-primary">Back</a>
 
 <?php $this->load->view("template/footer.php") ?>

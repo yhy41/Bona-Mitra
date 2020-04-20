@@ -26,30 +26,30 @@
       </div>
     </form>
   </div>
-<?php if (empty($dokter)) : ?>
+  <?php if (empty($dokter)) : ?>
             <div class="alert alert-danger" role="alert">
                 Data tidak ditemukan
             </div>
-            <?php endif; ?>
+  <?php endif; ?>
   <table class="table table-dark,table-responsive">
-  <thead>
-    <tr>
-        <th class="text-center" scope="col">ID</th>
-        <th class="text-center" scope="col">Nama</th>
-        <th class="text-center" scope="col">Alamat</th>
-        <th class="text-center" scope="col">Kontak</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><?php foreach ($dokter as $dr) : ?>
-        <td class="text-center"><?= $dr['id_dokter']; ?></td>
-        <td class="text-center"><?= $dr['nama_dokter']; ?></td>
-        <td class="text-center"><?= $dr['alamat']; ?></td>
-        <td class="text-center"><?= $dr['kontak']; ?></td>
-    </tr>
-    <?php endforeach ?>
-  </tbody>
-</table>
+    <thead>
+      <tr>
+          <th class="text-center" scope="col">ID</th>
+          <th class="text-center" scope="col">Nama</th>
+          <th class="text-center" scope="col">Alamat</th>
+          <th class="text-center" scope="col">Kontak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><?php foreach ($dokter as $dr) : ?>
+          <td class="text-center"><?= $dr['id_dokter']; ?></td>
+          <td class="text-center"><?= $dr['nama_dokter']; ?></td>
+          <td class="text-center"><?= $dr['alamat']; ?></td>
+          <td class="text-center"><?= $dr['kontak']; ?></td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
   <div class="row mt-3">
                 <div class="col md-6 text-center mt-5">
                     <a href="<?= site_url('pasien/TambahPasien') ?>" class="btn btn-primary">Lihat Jadwal Dokter</a>

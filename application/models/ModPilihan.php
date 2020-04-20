@@ -42,9 +42,9 @@ class ModPilihan extends CI_Model {
 	{
 		$keyword = $this->input->post('keyword', true);
 		//use query builder class to search data mahasiswa based on keyword "nama" or "jurusan" or "nim" or "email"
-		$where = "id_dokter='$keyword' OR nama_dokter='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
-		$this->db->where($where);
-		return $this->db->get('dokter')->result_array();
+		// $where = "id_dokter='$keyword' OR nama_dokter='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
+		// $this->db->where($where);
+		return $this->db->like('id_dokter',$keyword)->or_like('nama_dokter',$keyword)->or_like('alamat',$keyword)->get('dokter')->result_array();
 		//return data mahasiswa that has been searched
 	}
 	//////////////////////////////////////////////////////////// Perawat////////////////////////////////////////
@@ -84,9 +84,9 @@ class ModPilihan extends CI_Model {
 	{
 		$keyword = $this->input->post('keyword', true);
 		//use query builder class to search data mahasiswa based on keyword "nama" or "jurusan" or "nim" or "email"
-		$where = "id_perawat='$keyword' OR nama_perawat='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
-		$this->db->where($where);
-		return $this->db->get('perawat')->result_array();
+		// $where = "id_perawat='$keyword' OR nama_perawat='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
+		// $this->db->where($where);
+		return $this->db->like('id_perawat',$keyword)->or_like('nama_perawat',$keyword)->or_like('alamat',$keyword)->get('perawat')->result_array();
 		//return data mahasiswa that has been searched
 	}
 
@@ -111,7 +111,7 @@ class ModPilihan extends CI_Model {
 
  	public function ubahDataPasien($id_pasien){
  		$data = [
-			'nama_pasien' => $this->input->post('nama_dokter', true),
+			'nama_pasien' => $this->input->post('nama_pasien', true),
 			'tanggal_lahir'=> $this->input->post('tanggal_lahir', true),
 			'kontak'=> $this->input->post('kontak', true),
 			'email'=> $this->input->post('email', true),
@@ -131,14 +131,13 @@ class ModPilihan extends CI_Model {
 	{
 		$keyword = $this->input->post('keyword', true);
 		//use query builder class to search data mahasiswa based on keyword "nama" or "jurusan" or "nim" or "email"
-		$where = "id_pasien='$keyword' OR nama_pasien='$keyword' OR tanggal_lahir='$keyword' OR email='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
-		$this->db->where($where);
-		return $this->db->get('pasien')->result_array();
+		// $where = "id_pasien='$keyword' OR nama_pasien='$keyword' OR tanggal_lahir='$keyword' OR email='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
+		return $this->db->like('nama_pasien',$keyword)->or_like('tanggal_lahir',$keyword)->or_like('email',$keyword)->or_like('alamat',$keyword)->or_like('kontak',$keyword)->get('pasien')->result_array();
 		//return data mahasiswa that has been searched
 	}
 
 	/////////////////////////////////////////////Guest////////
- public function masukanSKK($data)
+ 	public function masukanSKK($data)
 	{
 		return $this->db->insert('feedback', $data);
 	}
@@ -184,6 +183,112 @@ class ModPilihan extends CI_Model {
 		$where = "nama_kamar='$keyword'";
 		$this->db->where($where);
 		return $this->db->get('kamar_inap')->result_array();
+	}
+
+	///////////////////////////////////////JADWAL///////////////////////////////////////////////////////////
+	public function getAllJadwal()
+	{
+		return $this->db->get('jadwal_dokter')->result_array();
+	}
+
+	public function tambahJadwal($data)
+	{
+		// $data = [
+		// 	"hari" => $this->input->post('hari', true),
+		// 	"jam_mulai" => $this->input->post('jam_mulai', true),
+		// 	"jam_selesai" => $this->input->post('jam_selesai', true),
+		// ];
+
+		return $this->db->insert('jadwal_dokter',$data);
+	}
+
+	public function hapusJadwal($id)
+	{
+		$this->db->where('id_jadwal',$id);
+		return $this->db->delete('jadwal_dokter');
+	}
+
+	public function getJadwalById($id)
+	{
+		$this->db->where('id_jadwal',$id);
+		return $this->db->get('jadwal_dokter')->row_array();
+	}
+
+	public function ubahJadwal($id)
+	{
+		$data = [
+			"hari" => $this->input->post('hari', true),
+			"jam_mulai" => $this->input->post('jam_mulai', true),
+			"jam_selesai" => $this->input->post('jam_selesai', true),
+		];
+		
+		$this->db->where('id_jadwal',$id);
+		return $this->db->update('jadwal_dokter',$data);
+	}
+
+	public function cariJadwal()
+	{
+		$keyword = $this->input->post('keyword', true);
+		return $this->db->like('hari',$keyword)->or_like('jam_mulai',$keyword)->or_like('jam_selesai',$keyword)->get('jadwal_dokter')->result_array();
+
+	}
+
+	///////////////////////////////////////FEEDBACK///////////////////////////////////////////////////////////
+	public function getAllSaran()
+	{
+		return $this->db->where('kategori','Saran')->get('feedback')->result_array();
+	}
+
+	public function getAllKomentar()
+	{
+		return $this->db->where('kategori','Komentar')->get('feedback')->result_array();
+	}
+
+	public function getAllKritik()
+	{
+		return $this->db->where('kategori','Kritik')->get('feedback')->result_array();
+	}
+
+	public function hapusFeedback($id)
+	{
+		$this->db->where('id_feedback',$id);
+		return $this->db->delete('feedback');
+	}
+
+	public function hapusSemua($kategori)
+	{
+		return $this->db->where('kategori',$kategori)->empty_table('feedback');
+	}
+
+
+	///////////////////////////////////////PLOTTING///////////////////////////////////////////////////////////
+	public function getAllPlot()
+	{
+		$SQL = "SELECT * FROM plotting_dokter A, dokter B, jadwal_dokter C WHERE A.id_dokter=B.id_dokter AND A.id_jadwal=C.id_jadwal";
+		return $this->db->query($SQL)->result_array();
+	}
+
+	public function tambahPlotting($id_jadwal,$id_dokter)
+	{
+		$data['id_jadwal'] = $id_jadwal;
+		$data['id_dokter'] = $id_dokter;
+
+		return $this->db->insert('plotting_dokter',$data);
+	}
+
+	public function hapusPlot($id)
+	{
+		$this->db->where('id_plotting',$id);
+		return $this->db->delete('plotting_dokter');
+	}
+
+	public function cariPlot() //belum works
+	{
+		$keyword = $this->input->post('keyword', true);
+
+		$SQL = "SELECT * FROM plotting_dokter A, dokter B, jadwal_dokter C WHERE A.id_dokter=B.id_dokter AND A.id_jadwal=C.id_jadwal AND (B.nama_dokter LIKE '$keyword' OR C.hari LIKE '$keyword' OR C.jam_mulai LIKE '$keyword' OR C.jam_selesai LIKE '$keyword')";
+
+		return $this->db->query($SQL)->result_array();
 	}
  }
 ?>

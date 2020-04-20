@@ -14,7 +14,6 @@
       </li>
       <li><a href="<?= site_url('pilihan/Formkomentar') ?>">Masukan</a></li>
       <li><a href="<?= site_url('pilihan/Kontak') ?>">Kontak</a></li>
-      <li><a href="#">apa ???</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a href="<?= site_url('pilihan/index') ?>"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>

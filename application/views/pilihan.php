@@ -38,7 +38,7 @@
     <div class="pos-f-t">
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-          <h5 class="text-white h4">Login User</h5>
+          <h5 class="text-white h5">Login User</h5>
           <a class="nav-link" href="<?= site_url('pilihan/masukpasien') ?>">Login as Guest</a>
           <a class="nav-link" href="<?= site_url('Login/index') ?>">Login as Administrator</a>
         </div>

@@ -2,11 +2,11 @@
 <?php $this->load->view("template/navbar.php") ?>
 
 <div class="container">
-    <?php if ($this->session->flashdata('flash')) : ?>
+    <?php if ($this->session->flashdata('info')) : ?>
     <div class="row mt-3">
         <div class="col-md-6">
             <div class="alert alert-success alert-dismissible show" role="alert">
-                <?= $this->session->flashdata('flash'); ?>.
+                <?= $this->session->flashdata('info'); ?>.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,8 +17,8 @@
 
     <div class="row mt-5">
         <div class="col">
-            <h3 class="text-center">Daftar Saran Pengunjung</h3>
-            <?php if (empty($saran)) : ?>
+            <h3 class="text-center">Daftar Kritik Pengunjung</h3>
+            <?php if (empty($kritik)) : ?>
             <div class="alert alert-danger" role="alert">
                 Data tidak ditemukan
             </div>
@@ -34,13 +34,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><?php foreach ($saran as $sr) : ?>
-                        <td class="text-center"><?= $sr['nama_tamu']; ?></td>
-                        <td class="text-center"><?= $sr['email_tamu']; ?></td>
-                        <td class="text-center"><?= $sr['kategori']; ?></td>
-                        <td class="text-center"><?= $sr['isi']; ?></td>
+                    <tr><?php foreach ($kritik as $kr) : ?>
+                        <td class="text-center"><?= $kr['nama_tamu']; ?></td>
+                        <td class="text-center"><?= $kr['email_tamu']; ?></td>
+                        <td class="text-center"><?= $kr['kategori']; ?></td>
+                        <td class="text-center"><?= $kr['isi']; ?></td>
                         <td class="text-center">
-                            <a href="<?= base_url(); ?>index.php/feedback/hapus/<?= $sr['id_feedback'] ?>/<?= $sr['kategori'] ?>" class="badge badge-danger float-center" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
+                            <a href="<?= base_url(); ?>index.php/feedback/hapus/<?= $kr['id_feedback']?>/<?= $kr['kategori']?>" class="badge badge-danger float-center" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
                         </td>
                     </tr>
                     <?php endforeach ?>
@@ -48,8 +48,8 @@
             </table>
             <div class="row mt-3">
                 <div class="col md-6 text-center mt-5">
-                    <?php if (!empty($saran)) : ?>
-                        <a href="<?= base_url(); ?>index.php/feedback/hapusSemua/<?= $sr['kategori'] ?>" class="btn btn-primary">Hapus Semua</a>
+                    <?php if (!empty($kritik)) : ?>
+                        <a href="<?= base_url(); ?>index.php/feedback/hapusSemua/<?= $kr['kategori'] ?>" class="btn btn-primary">Hapus Semua</a>
                     <?php endif; ?>
                 </div>
             </div>

@@ -80,7 +80,7 @@ class Input extends CI_Controller {
 		$cek = $this->ModPilihan->inputpasien($data);
 		if ($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
 		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
-		redirect('input/pasien');
+		redirect('pasien\LihatPasien');
 
 	}
 
@@ -97,10 +97,20 @@ class Input extends CI_Controller {
 	public function inputkamar(){
 		$data['nama_kamar'] = $this->input->post('nama_kamar', true);
 		$cek = $this->ModPilihan->addDataKamar($data);
-		if ($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
-		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
+		if ($cek) $this->session->set_flashdata('info','ditambahkan!');
+		else $this->session->set_flashdata('info','ditambahkan!');
 		redirect('kamar');
 
+	}
+
+	public function inputjadwal(){
+		$data['hari'] = $this->input->post('hari',true);
+		$data['jam_mulai'] = $this->input->post('jam_mulai',true);
+		$data['jam_selesai'] = $this->input->post('jam_selesai',true);
+		$cek = $this->ModPilihan->tambahjadwal($data);
+		if($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
+		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
+		redirect('pilihan\jadwal');
 	}
 }
 ?>

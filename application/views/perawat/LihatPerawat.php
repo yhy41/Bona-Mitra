@@ -41,7 +41,7 @@
             <table class="table mt-5">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">NoId</th>
+                        <!-- <th class="text-center" scope="col">NoId</th> -->
                         <th class="text-center" scope="col">Nama</th>
                         <th class="text-center" scope="col">Alamat</th>
                         <th class="text-center" scope="col">Kontak</th>
@@ -49,15 +49,14 @@
                 </thead>
                 <tbody>
                     <tr><?php foreach ($perawat as $pr) : ?>
-                        <td class="text-center"><?= $pr['id_perawat']; ?></td>
+                        <!-- <td class="text-center"><?= $pr['id_perawat']; ?></td> -->
                         <td class="text-center"><?= $pr['nama_perawat']; ?></td>
                         <td class="text-center"><?= $pr['alamat']; ?></td>
                         <td class="text-center"><?= $pr['kontak']; ?></td>
                         <td class="text-center">
                             <a href="<?= base_url(); ?>index.php/perawat/hapus/<?= $pr['id_perawat'] ?>" class="badge badge-danger float-center" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
                              <a href="<?= base_url(); ?>index.php/perawat/ubah/<?= $pr['id_perawat'] ?>" class="badge badge-danger float-center" onclick="return confirm('Apakah anda yakin mengubah data ini?');" ?>ubah</a>
-                           <!--  <a href="<?= base_url(); ?>dokter/ubah/<?= $mhs['id'] ?>" class="badge badge-success float-center" ?>ubah</a>
- -->                        </td>
+                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
