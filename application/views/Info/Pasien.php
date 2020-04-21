@@ -1,5 +1,6 @@
-<?php $this->load->view("template_Info/header.php") ?>
+<?php $this->load->view("template/header_pasien.php") ?>
 <?php $this->load->view("template_Info/navbar.php") ?>
+
 <style type="text/css">
     body{
       background: url("<?php echo base_url()?>assets/logo1.jpg") no-repeat;
@@ -24,15 +25,12 @@
       </div>
     </form>
   </div>
-  <?php if (empty($pasien)) : ?>
-            <div class="alert alert-danger" role="alert">
-                Data tidak ditemukan
-            </div>
-  <?php endif; ?>
+ 
 
   <table class="table table-dark,table-responsive">
     <thead>
       <tr>
+          <th class="text-center" scope="col">NO</th>
           <th class="text-center" scope="col">Nama</th>
           <th class="text-center" scope="col">Tanggal Lahir</th>
           <th class="text-center" scope="col">Alamat</th>
@@ -40,15 +38,8 @@
           <th class="text-center" scope="col">Kontak</th>
       </tr>
     </thead>
-    <tbody>
-      <tr><?php foreach ($pasien as $ps) : ?>
-          <td class="text-center"><?= $ps['nama_pasien']; ?></td>
-          <td class="text-center"><?= $ps['tanggal_lahir']; ?></td>
-          <td class="text-center"><?= $ps['alamat']; ?></td>
-          <td class="text-center"><?= $ps['email']; ?></td>
-          <td class="text-center"><?= $ps['kontak']; ?></td>
-      </tr>
-      <?php endforeach ?>
+    <tbody id="target-pasien">
+      
     </tbody>
   </table>
 
@@ -57,4 +48,35 @@
                     <a href="<?= site_url('pasien/TambahPasien') ?>" class="btn btn-primary">Info Kamar Pasien</a>
                 </div> -->
 </div>
-<?php $this->load->view("template_Info/footer.php") ?>
+<script type="text/javascript">
+  
+    ambilData();
+    function ambilData() {
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url()?>index.php/pasien/LihatPasien',
+            dataType:'json',
+            success: function(data){
+                var baris='';
+               for (var i=0; i<data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data[i].nama_pasien+'</td>'+
+                                '<td>'+data[i].tanggal_lahir+'</td>'+
+                                '<td>'+data[i].alamat+'</td>'+
+                                '<td>'+data[i].email+'</td>'+
+                                '<td>'+data[i].kontak+'</td>'+
+                            '</tr>'
+
+// onclick="ubahdata('+data[i].id_pasien+')"        
+
+                }
+                $('#target-pasien').html(baris);
+
+            }
+
+        });
+    }
+
+</script>
+<?php $this->load->view("template/footer_pasien.php") ?>

@@ -1,4 +1,4 @@
-<?php $this->load->view("template_Info/header.php") ?>
+<?php $this->load->view("template/header_pasien.php") ?>
 <?php $this->load->view("template_Info/navbar.php") ?>
 <style type="text/css">
   body{
@@ -26,11 +26,6 @@
       </div>
     </form>
   </div>
-<?php if (empty($perawat)) : ?>
-            <div class="alert alert-danger" role="alert">
-                Data tidak ditemukan
-            </div>
-            <?php endif; ?>
   <table class="table table-dark,table-responsive">
   <thead>
     <tr>
@@ -40,20 +35,37 @@
         <th class="text-center" scope="col">Kontak</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <tr><?php foreach ($perawat as $pr) : ?>
-        <td class="text-center"><?= $pr['id_perawat']; ?></td>
-        <td class="text-center"><?= $pr['nama_perawat']; ?></td>
-        <td class="text-center"><?= $pr['alamat']; ?></td>
-        <td class="text-center"><?= $pr['kontak']; ?></td>
-    </tr>
-    <?php endforeach ?>
+  <tbody id="target-perawat">
+   
   </tbody>
 </table>
-   <div class="row mt-3">
-                <div class="col md-6 text-center mt-5">
-                    <a href="<?= site_url('Info_Guest/Jadwal_Perawat') ?>" class="btn btn-primary">Lihat Jadwal Perawat</a>
-                </div>
   </div>
-<?php $this->load->view("template_Info/footer.php") ?>
+  <script type="text/javascript">
+       ambilData();
+    function ambilData() {
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url()?>index.php/perawat/LihatPerawat',
+            dataType:'json',
+            success: function(data){
+                var baris='';
+               for (var i=0; i<data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data[i].nama_perawat+'</td>'+
+                                '<td>'+data[i].alamat+'</td>'+
+                                '<td>'+data[i].kontak+'</td>'+
+                            '</tr>'
+
+// onclick="ubahdata('+data[i].id_pasien+')"        
+
+                }
+                $('#target-perawat').html(baris);
+            }
+
+        });
+    }
+
+
+  </script>
+<?php $this->load->view("template/footer.php") ?>

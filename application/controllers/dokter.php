@@ -1,63 +1,140 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit();
 class dokter extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('ModPilihan');
+		$this->load->model('ModPilihan','m');
+		$this->load->helper('url');
+		$this->load->helper('form');
 	}
-	public function index(){
+	function index(){
 		
 		$data['judul'] = 'Daftar Dokter';
-		$data['dokter'] = $this->ModPilihan->getAllDokter();
-		if ($this->input->post('keyword')) {
-			$data['dokter'] = $this->ModPilihan->cariDataDokter();
-		}
-		$this->load->view('dokter\Input_Dokter',$data);
+		$this->load->view('dokter\LihatDokter',$data);
 	}
-	public function LihatDokter()
+    function indexinfo(){
+        
+        $data['judul'] = 'Daftar Dokter Info';
+        $this->load->view('Info\DaftarDokter',$data);
+    }
+	function LihatDokter()
 	{
-		$data['judul'] = 'Daftar Dokter';
-		$data['dokter'] = $this->ModPilihan->getAllDokter();
-		if ($this->input->post('keyword')) {
-			$data['dokter'] = $this->ModPilihan->cariDataDokter();
-		}
-
-    	$this->load->view('dokter\LihatDokter',$data);
-
+		$dataDokter = $this->m->getAllDokter('dokter')->result();
+	
+		echo json_encode($dataDokter);
 
 	}
-	public function hapus($id_dokter)
+	public function HapusDokter()
 	{
-		$this->ModPilihan->hapusDatadokter($id_dokter);
-		$this->session->set_flashdata('success', 'Dokter Berhasil DiHapus');
-		redirect('dokter/LihatDokter','refresh');
-		//call method hapusDataMahasiswa with parameter id from mahasiswa_model
-		//use flashdata to show alert "dihapus"
-		//back to controller mahasiswa
+		$id_dokter= $this->input->post("id_dokter");
+		$where=array('id_dokter'=> $id_dokter);
+		$dataDokter = $this->m->HapusDokter($where,'dokter');
+		 $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
+
+        echo json_encode($result,$dataDokter);
 
 	}
 	public function TambahDokter()
 	{
-    	$this->load->view('dokter\Input_Dokter');
+    	$nama_dokter=$this->input->post('nama_dokter');
 
-	}
-	public function ubah($id_dokter)
+    	$alamat=$this->input->post('alamat');
+    	
+        $kontak=$this->input->post('kontak');
+
+
+    if($nama_dokter==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama dokter masih kosong',
+            ];
+        }elseif ($alamat=='') {
+            $result = [
+                'status' => false,
+                'message' => 'alamat masih kosong',
+            ];
+        }elseif ($kontak=='') {
+            $result = [
+                'status' => false,
+                'message' => 'kosong masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'nama_dokter'=>$nama_dokter,
+                'alamat'=>$alamat,
+                'kontak'=>$kontak,
+            );
+            $this->m->TambahDokter($data,'dokter');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+
+
+
+	public function UbahDokter()
 	{
-		if($this->input->post('nama_dokter')){
-				$this->form_validation->set_rules('check_nama_dokter','check_alamat','check_kontak','required');
-				$this->ModPilihan->ubahDataDokter($id_dokter);
-				redirect('dokter/LihatDokter');
-		}else{
-				$data['judul'] = 'Form Ubah Data Dokter';
-				$data['dokter'] = $this->ModPilihan->getDokterById($id_dokter);
-				$this->load->view('dokter\UbahDokter',$data);
-		}
+        $id_dokter=$this->input->post('id_dokter');
+		$nama_dokter=$this->input->post('nama_dokter');
 
-		
+        $alamat=$this->input->post('alamat');
+        
+        $kontak=$this->input->post('kontak');
 
-		//from library form_validation, set rules for nama, nim, email = required
+        if($nama_dokter==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama dokter masih kosong',
+            ];
+        }elseif ($alamat=='') {
+            $result = [
+                'status' => false,
+                'message' => 'alamat masih kosong',
+            ];
+        }elseif ($kontak=='') {
+            $result = [
+                'status' => false,
+                'message' => 'kosong masih kosong',
+            ];
+        }else {
 
-		
-	}
+            $data=array(
+
+                'nama_dokter'=>$nama_dokter,
+                'alamat'=>$alamat,
+                'kontak'=>$kontak,
+            );
+            $where=array('id_dokter'=>$id_dokter);
+            $dataDokter=$this->m->UpdateDokter($where,$data,'dokter');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result,$dataDokter);
+    }
+           
+
+	
+
+	function AmbilIdDokter(){
+			$id_dokter=$this->input->post('id_dokter');
+			$where=array('id_dokter'=> $id_dokter);
+			$dataDokter = $this->m->AmbilIdDokter('dokter',$where)->row();
+
+			echo json_encode($dataDokter);
+
+    		}
 }
+
 ?>

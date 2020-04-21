@@ -23,7 +23,7 @@ class Plotting extends CI_Controller
 	public function PilihDokter()
 	{
 		$data['judul'] = 'Input Plotting Dokter';
-		$data['dokter'] = $this->ModPilihan->getAllDokter();
+		$data['dokter'] = $this->ModPilihan->getPlotDokter();
 
 		if ($this->input->post('keyword')) {
 			$data['dokter'] = $this->ModPilihan->cariDataDokter();
@@ -36,7 +36,7 @@ class Plotting extends CI_Controller
 	{
 		$data['judul'] = 'Pilih Jadwal';
 		$data['id_dokter'] = $id_dokter;
-		$data['jadwal'] = $this->ModPilihan->getAllJadwal();
+		$data['jadwal'] = $this->ModPilihan->getAllPlotJadwal();
 
 		if ($this->input->post('keyword')) {
 			$data['jadwal'] = $this->ModPilihan->cariJadwal();

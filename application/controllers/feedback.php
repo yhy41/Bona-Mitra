@@ -6,33 +6,82 @@ class Feedback extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('ModPilihan');
-		$this->load->library('form_validation');
+		$this->load->model('ModPilihan','m');
+		$this->load->helper('url');
+		$this->load->helper('form');
 	}
 
-	public function Saran()
-	{
-		$data['judul'] = 'Saran Pengunjung';
-		$data['saran'] = $this->ModPilihan->getAllSaran();
-
+	function indexsaran(){
+		$data['judul'] = 'Daftar Saran';
 		$this->load->view('masukan\LihatSaran',$data);
 	}
-
-	public function Komentar()
+	public function LihatSaran()
 	{
-		$data['judul'] = 'Komentar Pengunjung';
-		$data['komentar'] = $this->ModPilihan->getAllKomentar();
+		$dataSaran = $this->m->getAllSaran();
+	
+		echo json_encode($dataSaran);
+	}
+	function HapusSaran(){
+		$id_feedback= $this->input->post("id_feedback");
+		$where=array('id_feedback'=> $id_feedback);
+		$dataSaran = $this->m->HapusSaran($where,'feedback');
+		 $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
 
+        echo json_encode($result,$dataSaran);
+	}
+
+	function indexkomentar(){
+		$data['judul'] = 'Daftar Komentar';
 		$this->load->view('masukan\LihatKomentar',$data);
 	}
 
-	public function Kritik()
+	public function LihatKomentar()
 	{
-		$data['judul'] = 'Kritik Pengunjung';
-		$data['kritik'] = $this->ModPilihan->getAllKritik();
+		$dataKomentar = $this->m->getAllKomentar();
+	
+		echo json_encode($dataKomentar);
+	}
 
+	function HapusKomentar(){
+		$id_feedback= $this->input->post("id_feedback");
+		$where=array('id_feedback'=> $id_feedback);
+		$dataKomentar = $this->m->HapusSaran($where,'feedback');
+		 $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
+
+        echo json_encode($result,$dataKomentar);
+	}
+
+	function indexkritik(){
+		$data['judul'] = 'Daftar Kritik';
 		$this->load->view('masukan\LihatKritik',$data);
 	}
+
+	public function LihatKritik()
+	{
+		$dataKritik = $this->m->getAllKritik();
+	
+		echo json_encode($dataKritik);
+	}
+
+	function HapusKritik(){
+		$id_feedback= $this->input->post("id_feedback");
+		$where=array('id_feedback'=> $id_feedback);
+		$dataKritik = $this->m->HapusSaran($where,'feedback');
+		 $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
+
+        echo json_encode($result,$dataKritik);
+	}
+
+
 
 	public function hapus($id,$kategori)
 	{

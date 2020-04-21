@@ -1,4 +1,4 @@
-<?php $this->load->view("template_Info/header.php") ?>
+<?php $this->load->view("template/header_pasien.php") ?>
 <?php $this->load->view("template_Info/navbar.php") ?>
 <style type="text/css">
   body{
@@ -26,33 +26,50 @@
       </div>
     </form>
   </div>
-  <?php if (empty($dokter)) : ?>
-            <div class="alert alert-danger" role="alert">
-                Data tidak ditemukan
-            </div>
-  <?php endif; ?>
   <table class="table table-dark,table-responsive">
     <thead>
       <tr>
-          <th class="text-center" scope="col">ID</th>
+          <th class="text-center" scope="col">No</th>
           <th class="text-center" scope="col">Nama</th>
           <th class="text-center" scope="col">Alamat</th>
           <th class="text-center" scope="col">Kontak</th>
       </tr>
     </thead>
-    <tbody>
-      <tr><?php foreach ($dokter as $dr) : ?>
-          <td class="text-center"><?= $dr['id_dokter']; ?></td>
-          <td class="text-center"><?= $dr['nama_dokter']; ?></td>
-          <td class="text-center"><?= $dr['alamat']; ?></td>
-          <td class="text-center"><?= $dr['kontak']; ?></td>
-      </tr>
-      <?php endforeach ?>
+    <tbody id="target-perawat">
+
     </tbody>
   </table>
-  <div class="row mt-3">
+  <!-- <div class="row mt-3">
                 <div class="col md-6 text-center mt-5">
                     <a href="<?= site_url('pasien/TambahPasien') ?>" class="btn btn-primary">Lihat Jadwal Dokter</a>
                 </div>
-  </div>
-<?php $this->load->view("template_Info/footer.php") ?>
+  </div> -->
+</div>
+<script type="text/javascript">
+
+   ambilData();
+    function ambilData() {
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url()?>index.php/dokter/LihatDokter',
+            dataType:'json',
+            success: function(data){
+                var baris='';
+               for (var i=0; i<data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data[i].nama_dokter+'</td>'+
+                                '<td>'+data[i].alamat+'</td>'+
+                                '<td>'+data[i].kontak+'</td>'+
+                            '</tr>'
+
+// onclick="ubahdata('+data[i].id_pasien+')"        
+
+                }
+                $('#target-perawat').html(baris);
+            }
+
+        });
+    }
+</script>
+<?php $this->load->view("template/footer_pasien.php") ?>

@@ -1,48 +1,107 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-class kamar extends CI_Controller
-{
-
-	public function __construct()
-	{
+defined('BASEPATH') OR exit();
+class kamar extends CI_Controller {
+	function __construct(){
 		parent::__construct();
-		$this->load->model('ModPilihan');
-		$this->load->library('form_validation');
+		$this->load->model('ModPilihan','m');
+		$this->load->helper('url');
+		$this->load->helper('form');
 	}
-
-
-	public function index()
-	{
+	function index(){
+		
 		$data['judul'] = 'Daftar Kamar';
-		$data['kamar_inap'] = $this->ModPilihan->getAllKamar();
-		if ($this->input->post('keyword')) {
-			$data['kamar_inap'] = $this->ModPilihan->searchDataKamar();
-		}
-    	$this->load->view('kamar/index',$data);
+		$this->load->view('kamar\LihatKamar',$data);
 	}
-
-	public function tambahKamar()
+	function LihatKamar()
 	{
-		$this->load->view('kamar/tambah');
-	}
+		$dataKamar = $this->m->getAllKamar('kamar_inap')->result();
+	
+		echo json_encode($dataKamar);
 
-	public function delete($id_kamar)
-	{
-		$cek = $this->ModPilihan->deleteDataKamar($id_kamar);
-		$this->session->set_flashdata('flash', 'dihapus');
-		redirect('kamar','refresh');
 	}
+	public function HapusKamar()
+	{
+		$id_kamar= $this->input->post("id_kamar");
+		$where=array('id_kamar'=> $id_kamar);
+		$dataKamar = $this->m->HapusKamar($where,'kamar_inap');
+		  
+          $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
 
-	public function change($id_kamar)
-	{
-		if($this->input->post('nama_kamar')){
-				$this->form_validation->set_rules('nama_kamar', 'Nama_kamar', 'required');
-				$this->ModPilihan->changeDataKamar($id_kamar);
-				redirect('kamar');
-		}else{
-				$data['judul'] = 'Form Ubah Data Kamar';
-				$data['kamar_inap'] = $this->ModPilihan->getKamarById($id_kamar);
-				$this->load->view('kamar\ubah',$data);
-		}
+        echo json_encode($result);
+
 	}
+	public function TambahKamar()
+	{
+    	$nama_kamar=$this->input->post('nama_kamar');
+
+
+    	if($nama_kamar==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama kamar masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'id_kamar'=> '',
+                'nama_kamar'=>$nama_kamar,
+            );
+            $this->m->TambahKamar($data,'kamar_inap');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+
+	public function UbahKamar()
+	{
+
+        $id_kamar=$this->input->post('id_kamar');
+		
+        $nama_kamar=$this->input->post('nama_kamar');
+
+        if($nama_kamar==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama kamar masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'nama_kamar'=>$nama_kamar,
+            );
+            $where=array('id_kamar'=>$id_kamar);
+
+            $this->m->UpdateKamar($where,$data,'kamar_inap');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses mengubah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+
+
+	
+
+	function AmbilIdKamar(){
+
+			$id_kamar=$this->input->post('id_kamar');
+			$where=array('id_kamar'=> $id_kamar);
+			$dataKamar = $this->m->AmbilIdKamar('kamar_inap',$where)->row();
+
+			echo json_encode($dataKamar);
+
+    		}
 }
+
+?>

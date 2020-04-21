@@ -51,10 +51,7 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('masukan\FormSaran');
 	}
-	public function FormKomentar()
-	{
-    	$this->load->view('masukan\FormKomentar');
-	}
+	
 	public function FormKritik()
 	{
     	$this->load->view('masukan\FormKritik');
@@ -79,9 +76,6 @@ class Pilihan extends CI_Controller {
     	$this->load->view('Input_Pasien');
 	}
 
-
-
-
 	public function Input_Dokter()
 	{
 		$data['judul'] = 'Daftar Dokter';
@@ -91,7 +85,6 @@ class Pilihan extends CI_Controller {
 		}
 
     	$this->load->view('LihatDokter',$data);
-
 
 	}
 	public function Tambah_Dokter()
@@ -103,10 +96,6 @@ class Pilihan extends CI_Controller {
 	{
     	$this->load->view('Jadwal_Dokter');
 	}
-
-
-
-
 	
 	public function Input_Perawat()
 	{

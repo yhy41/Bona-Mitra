@@ -7,12 +7,12 @@
       <li class="active"><a href="<?= site_url('pilihan/masukpasien') ?>">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<?= site_url('pilihan/Pasien') ?>">Pasien</a></li>
-          <li><a href="<?= site_url('pilihan/DaftarDokter') ?>">Dokter</a></li>
-          <li><a href="<?= site_url('pilihan/DaftarPerawat') ?>">Perawat</a></li>
+          <li><a href="<?= site_url('pasien/indexinfo') ?>">Pasien</a></li>
+          <li><a href="<?= site_url('dokter/indexinfo') ?>">Dokter</a></li>
+          <li><a href="<?= site_url('perawat/indexinfo') ?>">Perawat</a></li>
         </ul>
       </li>
-      <li><a href="<?= site_url('pilihan/Formkomentar') ?>">Masukan</a></li>
+      <li><a href="<?= site_url('Input_Masukan/index') ?>">Masukan</a></li>
       <li><a href="<?= site_url('pilihan/Kontak') ?>">Kontak</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">

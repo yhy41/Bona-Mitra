@@ -1,63 +1,166 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit();
 class pasien extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('ModPilihan');
+		$this->load->model('ModPilihan','m');
+		$this->load->helper('url');
+		$this->load->helper('form');
 	}
-	public function index(){
+	function index(){
 		
 		$data['judul'] = 'Daftar Pasien';
-		$data['pasien'] = $this->ModPilihan->getAllPasien();
-		if ($this->input->post('keyword')) {
-			$data['pasien'] = $this->ModPilihan->cariDataPasisen();
-		}
-		$this->load->view('pasien\Input_Dokter',$data);
+		$this->load->view('pasien\LihatPasien',$data);
 	}
-	public function LihatPasien()
+    function indexinfo(){
+        
+        $data['judul'] = 'Daftar Pasien Info';
+        $this->load->view('info\Pasien',$data);
+    }
+
+	function LihatPasien()
 	{
-		$data['judul'] = 'Daftar Pasien';
-		$data['pasien'] = $this->ModPilihan->getAllPasien();
-		if ($this->input->post('keyword')) {
-			$data['pasien'] = $this->ModPilihan->cariDataPasien();
-		}
-
-    	$this->load->view('pasien\LihatPasien',$data);
-
+		$dataPasien = $this->m->getAllPasien('pasien')->result();
+	
+		echo json_encode($dataPasien);
 
 	}
-	public function hapus($id_pasien)
+
+	public function HapusPasien()
 	{
-		$this->ModPilihan->hapusDatapasien($id_pasien);
-		$this->session->set_flashdata('success', 'Pasien Berhasil DiHapus');
-		redirect('pasien/LihatPasien','refresh');
-		//call method hapusDataMahasiswa with parameter id from mahasiswa_model
-		//use flashdata to show alert "dihapus"
-		//back to controller mahasiswa
+		$id_pasien= $this->input->post("id_pasien");
+		$where=array('id_pasien'=> $id_pasien);
+		$dataPasien=$this->m->hapuspasien($where,'pasien');
+		
+        $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
+
+        echo json_encode($result,$dataPasien);
+
 
 	}
 	public function TambahPasien()
 	{
-    	$this->load->view('pasien\Input_Pasien');
+    	$nama_pasien=$this->input->post('nama_pasien');
+    	$tanggal_lahir=$this->input->post('tanggal_lahir');
+    	$email=$this->input->post('email');
+    	$alamat=$this->input->post('alamat');
+    	$kontak=$this->input->post('kontak');
 
-	}
-	public function ubah($id_pasien)
+        if($nama_pasien==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama pasien masih kosong',
+            ];
+        }elseif ($tanggal_lahir=='') {
+            $result = [
+                'status' => false,
+                'message' => 'tanggal_lahir masih kosong',
+            ];
+        }elseif ($email=='') {
+            $result = [
+                'status' => false,
+                'message' => 'email masih kosong',
+            ];
+        }elseif ($alamat=='') {
+            $result = [
+                'status' => false,
+                'message' => 'alamat masih kosong',
+            ];
+        }elseif ($kontak=='') {
+            $result = [
+                'status' => false,
+                'message' => 'kontak masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'id_pasien'=> '',
+                'nama_pasien'=>$nama_pasien,
+                'tanggal_lahir'=>$tanggal_lahir,
+                'email'=>$email,
+                'alamat'=>$alamat,
+                'kontak'=>$kontak,
+            );
+            $this->m->TambahPasien($data,'pasien');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+
+	public function UbahPasien()
 	{
-		if($this->input->post('nama_pasien')){
-				$this->form_validation->set_rules('check_nama_pasien','check_tanggal_lahir','check_alamat','check_email','check_kontak','required');
-				$this->ModPilihan->ubahDataPasien($id_pasien);
-				redirect('pasien/LihatPasien');
-		}else{
-				$data['judul'] = 'Form Ubah Data Pasien';
-				$data['pasien'] = $this->ModPilihan->getPasienById($id_pasien);
-				$this->load->view('pasien\UbahPasien',$data);
-		}
+		$id_pasien=$this->input->post('id_pasien');
+    	$nama_pasien=$this->input->post('nama_pasien');
+    	$tanggal_lahir=$this->input->post('tanggal_lahir');
+    	$email=$this->input->post('email');
+    	$alamat=$this->input->post('alamat');
+    	$kontak=$this->input->post('kontak');
 
-		
+        if($nama_pasien==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama pasien masih kosong',
+            ];
+        }elseif ($tanggal_lahir=='') {
+            $result = [
+                'status' => false,
+                'message' => 'tanggal_lahir masih kosong',
+            ];
+        }elseif ($email=='') {
+            $result = [
+                'status' => false,
+                'message' => 'email masih kosong',
+            ];
+        }elseif ($alamat=='') {
+            $result = [
+                'status' => false,
+                'message' => 'alamat masih kosong',
+            ];
+        }elseif ($kontak=='') {
+            $result = [
+                'status' => false,
+                'message' => 'kontak masih kosong',
+            ];
+        }else {
 
-		//from library form_validation, set rules for nama, nim, email = required
+            
 
-		
-	}
+            $data=array(
+                'nama_pasien'=>$nama_pasien,
+                'tanggal_lahir'=>$tanggal_lahir,
+                'email'=>$email,
+                'alamat'=>$alamat,
+                'kontak'=>$kontak,
+            );
+
+            $where=array('id_pasien'=>$id_pasien);
+            
+            $this->m->UpdatePasien($where,$data,'pasien');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses mengubah  data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+	function AmbilId(){
+			$id_pasien=$this->input->post('id_pasien');
+			$where=array('id_pasien'=> $id_pasien);
+			$dataPasien = $this->m->AmbilId('pasien',$where)->row();
+
+			echo json_encode($dataPasien);
+
+    		}
 }
+
 ?>

@@ -1,4 +1,4 @@
-<?php $this->load->view("template/header.php") ?>
+<?php $this->load->view("template/header_pasien.php") ?>
 <?php $this->load->view("template/navbar.php") ?>
 <!-- bagian flash info -->
 <?php if ($this->session->flashdata('info')) : ?>
@@ -20,4 +20,4 @@
 <button type="submit" class="btn btn-primary">Tambah Data</button>
 <a href="<?= site_url('kamar') ?>" class="btn btn-primary">Back</a>
 
-<?php $this->load->view("template/footer.php") ?>
+<?php $this->load->view("template/footer_pasien.php") ?>

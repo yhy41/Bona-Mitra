@@ -7,25 +7,25 @@
       <li class="active"><a href="<?= site_url('pilihan/Home_admin')?>">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Input Data<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<?= site_url('pasien/LihatPasien') ?>">Input Data Pasien</a></li>
-          <li><a href="<?= site_url('dokter/LihatDokter') ?>">Input Data Dokter</a></li>
-          <li><a href="<?= site_url('perawat/LihatPerawat') ?>">Input Data Perawat</a></li>
+          <li><a href="<?= site_url('pasien/index') ?>">Input Data Pasien</a></li>
+          <li><a href="<?= site_url('dokter/index') ?>">Input Data Dokter</a></li>
+          <li><a href="<?= site_url('perawat/index') ?>">Input Data Perawat</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Aktivitas<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
           <li><a href="<?= site_url('pilihan/Rawat Inap') ?>">Rawat Inap</a></li>
-          <li><a href="<?= site_url('plotting') ?>">Plotting Dokter</a></li>
+          <li><a href="<?= site_url('plotting/index') ?>">Plotting Dokter</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Kelola<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<?= site_url('pilihan/jadwal') ?>">Jadwal Dokter</a></li>
-          <li><a href="<?= site_url('kamar') ?>">Kamar</a></li>
-          <li><a href="<?= site_url('feedback/saran') ?>">Lihat Saran</a></li>
-          <li><a href="<?= site_url('feedback/komentar') ?>">Lihat Komentar</a></li>
-           <li><a href="<?= site_url('feedback/kritik') ?>">Lihat Kritik</a></li>
+          <li><a href="<?= site_url('jadwal/index') ?>">Jadwal Dokter</a></li>
+          <li><a href="<?= site_url('kamar/index') ?>">Kamar</a></li>
+          <li><a href="<?= site_url('feedback/indexsaran') ?>">Lihat Saran</a></li>
+          <li><a href="<?= site_url('feedback/indexkomentar') ?>">Lihat Komentar</a></li>
+           <li><a href="<?= site_url('feedback/indexkritik') ?>">Lihat Kritik</a></li>
         </ul>
       </li>
     </ul>

@@ -1,4 +1,4 @@
-<?php $this->load->view("template_Guest/header.php") ?>
+<?php $this->load->view("template/header_pasien.php") ?>
 <?php $this->load->view("template_Guest/navbar.php") ?>
 <style type="text/css">
   body{
@@ -16,19 +16,23 @@
 
 <div class="container">
   <h2>Feedback Dari Anda Sangat Berharga Bagi Klinik Kami</h2>
-  <?php if ($this->session->flashdata('info')) : ?>
     <div class="row mt-3">
         <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible show" role="alert">
-                <?= $this->session->flashdata('info'); ?>.
+            <div class="alert alert-success alert-dismissible" role="alert" style="display: none">
+                
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+                
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
     </div>
-    <?php endif; ?>
-  <form action="<?= site_url('Input_Masukan/feedback') ?>" method="post">
+  <form>
     <div class="form-group">
       <label for="email">Nama :</label>
       <input type="input" class="form-control" id="email" placeholder="Enter nama" name="nama_tamu">
@@ -47,15 +51,6 @@
         <?= form_radio('kategori','Komentar','', ['class'=>'form-check-input']) ?>
         Komentar
       </div>
-      <!-- <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pilih
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a id="Saran" name="kategori" value="Saran">Saran</a></li>
-            <li><a id="Komentar" name="kategori" value="Komentar" >Komentar</a></li>
-            <li><a id="Kritik" name="kategori" value="Kritik">Kritik</a></li>
-        </ul>
-      </div> -->
     </div>
   
     <div class="form-group">
@@ -69,6 +64,41 @@
     <div class="checkbox">
       <label style="color: red;"><input type="checkbox" name="Pernyataan"><b>saya menyatakan ini dengan Kondisi Normal</b> </label>
     </div>
-    <button type="submit" class="btn btn-default">Kirim</button>
+    <button type="button" id="btn-tambah" onclick="Tambah()"  class="btn-primary">Tamnbah</button>
 
-<?php $this->load->view("template_Guest/footer.php") ?>
+<script type="text/javascript">
+  
+function Tambah(){
+        $('.alert-success').hide();
+        $('.alert-danger').hide();
+        var nama_tamu =$("[name='nama_tamu']").val();
+        var kategori =$("[name='kategori']").val();
+        var email_tamu =$("[name='email_tamu']").val();
+        var isi =$("[name='isi']").val();
+
+
+        $.ajax({
+            type:'POST',
+            data:'nama_tamu='+nama_tamu+'&kategori='+kategori+'&email_tamu='+email_tamu+'&isi='+isi,
+            url:'<?php echo base_url().'index.php/Input_Masukan/feedback' ?>',
+            dataType:'json',
+            success:function(hasil){
+                if(hasil.status) {
+                  $('.alert-success').html(hasil.message);
+                  $('.alert-success').show();
+                  
+                  $("[name='nama_tamu']").val('');
+                  $("[name='kategori']").val('');
+                  $("[name='email_tamu']").val('');
+                  $("[name='isi']").val('');
+                } else {
+                  $('.alert-danger').html(hasil.message);
+                  $('.alert-danger').show();
+                }
+            }
+        });
+
+    }
+
+</script>
+<?php $this->load->view("template/footer_pasien.php") ?>

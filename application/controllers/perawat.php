@@ -1,55 +1,134 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit();
 class perawat extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('ModPilihan');
+		$this->load->model('ModPilihan','m');
+		$this->load->helper('url');
+		$this->load->helper('form');
 	}
-	public function index(){
+	function index(){
 		
-		$data['judul'] = 'Daftar perawat';
-		$data['perawat'] = $this->ModPilihan->getAllPerawat();
-		if ($this->input->post('keyword')) {
-			$data['perawat'] = $this->ModPilihan->cariDataPerawat();
-		}
-		$this->load->view('perawat\Input_Perawat',$data);
-	}
-	public function LihatPerawat()
-	{
 		$data['judul'] = 'Daftar Perawat';
-		$data['perawat'] = $this->ModPilihan->getAllPerawat();
-		if ($this->input->post('keyword')) {
-			$data['perawat'] = $this->ModPilihan->cariDataPerawat();
-		}
-
-    	$this->load->view('perawat\LihatPerawat',$data);
-
+		$this->load->view('perawat\LihatPerawat',$data);
+	}
+    function indexinfo(){
+        $data['judul'] = 'Daftar Perawat';
+        $this->load->view('info\DaftarPerawat',$data);
+    }
+	function LihatPerawat()
+	{
+		$dataPerawat = $this->m->getAllPerawat('perawat')->result();
+	
+		echo json_encode($dataPerawat);
 
 	}
-	public function hapus($id_perawat)
+	public function HapusPerawat()
 	{
-		$this->ModPilihan->hapusDataPerawat($id_perawat);
-		$this->session->set_flashdata('success', 'perawat Berhasil DiHapus');
-		redirect('perawat/LihatPerawat','refresh');
+		$id_perawat= $this->input->post("id_perawat");
+		$where=array('id_perawat'=> $id_perawat);
+		$dataPerawat=$this->m->HapusPerawat($where,'perawat');
+		
+        $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
+
+        echo json_encode($result,$dataPerawat);
+
 
 	}
 	public function TambahPerawat()
 	{
-    	$this->load->view('perawat\Input_Perawat');
+    	$nama_perawat=$this->input->post('nama_perawat');
 
-	}
-	public function ubah($id_perawat)
+    	$alamat=$this->input->post('alamat');
+    	
+        $kontak=$this->input->post('kontak');
+
+        if($nama_perawat==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama perawat masih kosong',
+            ];
+        }elseif ($alamat=='') {
+            $result = [
+                'status' => false,
+                'message' => 'alamat masih kosong',
+            ];
+        }elseif ($kontak=='') {
+            $result = [
+                'status' => false,
+                'message' => 'kosong masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'nama_perawat'=>$nama_perawat,
+                'alamat'=>$alamat,
+                'kontak'=>$kontak,
+            );
+            $this->m->TambahPerawat($data,'perawat');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+	public function UbahPerawat()
 	{
-		
-		if($this->input->post('nama_perawat')){
-				$this->form_validation->set_rules('check_nama_perawat','check_alamat','check_kontak','required');
-				$this->ModPilihan->ubahDataPerawat($id_perawat);
-				redirect('perawat/LihatPerawat');
-		}else{
-				$data['judul'] = 'Form Ubah Data Perawat';
-				$data['perawat'] = $this->ModPilihan->getPerawatById($id_perawat);
-				$this->load->view('perawat\UbahPerawat',$data);
-		}
-	}
+        $id_perawat=$this->input->post('id_perawat');
+		$nama_perawat=$this->input->post('nama_perawat');
+
+        $alamat=$this->input->post('alamat');
+        
+        $kontak=$this->input->post('kontak');
+	
+        if($nama_perawat==''){
+            $result = [
+                'status' => false,
+                'message' => 'Nama perawat masih kosong',
+            ];
+        }elseif ($alamat=='') {
+            $result = [
+                'status' => false,
+                'message' => 'alamat masih kosong',
+            ];
+        }elseif ($kontak=='') {
+            $result = [
+                'status' => false,
+                'message' => 'kosong masih kosong',
+            ];
+        }else {
+
+            $data=array(
+
+                'nama_perawat'=>$nama_perawat,
+                'alamat'=>$alamat,
+                'kontak'=>$kontak,
+            );
+            $where=array('id_perawat'=>$id_perawat);
+            $this->m->UpdatePerawat($where,$data,'perawat');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses mengubah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+	function AmbilIdPerawat(){
+			$id_perawat=$this->input->post('id_perawat');
+			$where=array('id_perawat'=> $id_perawat);
+			$dataPerawat = $this->m->AmbilIdPerawat('perawat',$where)->row();
+
+			echo json_encode($dataPerawat);
+
+    		}
 }
+
 ?>

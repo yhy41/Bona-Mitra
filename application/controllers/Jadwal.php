@@ -1,85 +1,137 @@
 <?php
-
+defined('BASEPATH') OR exit();
 class Jadwal extends CI_Controller
 {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('ModPilihan');
-		$this->load->library('form_validation');
+		$this->load->model('ModPilihan','m');
+		$this->load->helper('url');
+		$this->load->helper('form');
 	}
 
 	public function index()
 	{
-		$data['jadwal'] = 'Jadwal Dokter';
-		$data['jadwal'] = $this->ModPilihan->getAllJadwal();
-		if ($this->input->post('keyword')) {
-			$data['jadwal'] = $this->ModPilihan->cariJadwal();
-		}
+		$data['judul'] = 'Daftar Dokter';
 		$this->load->view('jadwal\Lihat_Jadwal',$data);
 	}
+	function LihatJadwal(){
+		$dataJadwal = $this->m->getAllJadwal('jadwal_dokter')->result();
+	
+		echo json_encode($dataJadwal);
 
-	public function tambah()
+	}
+
+	function HapusJadwal(){
+		$id_jadwal= $this->input->post("id_jadwal");
+		$where=array('id_jadwal'=> $id_jadwal);
+		$dataJadwal = $this->m->HapusJadwal($where,'jadwal_dokter');
+		 $result = [
+                'status' => true,
+                'message' => 'Sukses hapus data',
+            ];
+
+        echo json_encode($result,$dataJadwal);
+
+	}
+
+	public function TambahJadwal()
 	{
 		
-		$data['judul'] = 'Form Jadwal Dokter';
-		if($this->input->post('hari')){
-			$this->form_validation->set_rules('hari','Hari','required');
-			$this->form_validation->set_rules('jam_mulai','Jam_Mulai','required');
-			$this->form_validation->set_rules('jam_selesai','Jam_Selesai','required');
+		$hari=$this->input->post('hari');
 
-			
-			if($this->form_validation->run() == false){
-				redirect('Tambah_Jadwal','refresh');
-			}else{
-				$this->ModPilihan->tambahJadwal();
-				$this->session->set_flashdata('flash','berhasil ditambah!');
-				redirect('Jadwal_Dokter','refresh');
-			}
-		}else{
-			$this->load->view('jadwal\Tambah_Jadwal',$data);
-		}
-	}
+    	$jam_mulai=$this->input->post('jam_mulai');
+    	
+        $jam_selesai=$this->input->post('jam_selesai');
 
-	public function hapus($id)
-	{
-		$this->ModPilihan->hapusJadwal($id);
-		$this->session->set_flashdata('info','Data berhasil dihapus ');
-		redirect('pilihan\jadwal','refresh');
-	}
+
+    if($hari==''){
+            $result = [
+                'status' => false,
+                'message' => 'Hari Jadwal masih kosong',
+            ];
+        }elseif ($jam_mulai=='') {
+            $result = [
+                'status' => false,
+                'message' => 'jam_mulai masih kosong',
+            ];
+        }elseif ($jam_selesai=='') {
+            $result = [
+                'status' => false,
+                'message' => 'jam_selesai masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'hari'=>$hari,
+                'jam_mulai'=>$jam_mulai,
+                'jam_selesai'=>$jam_selesai,
+            );
+            $this->m->TambahJadwal($data,'jadwal_dokter');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+
 
 	public function ubah($id)
 	{
-		$data['judul'] = 'Form Ubah Jadwal';
+		$id_jadwal=$this->input->post('id_jadwal');
 
-		$data['jadwal'] = $this->ModPilihan->getJadwalById($id);
+		$hari=$this->input->post('hari');
 
-		if($this->input->post('hari')){
-			$this->form_validation->set_rules('hari','Hari','required');
-			$this->form_validation->set_rules('jam_mulai','Jam_Mulai','required');
-			$this->form_validation->set_rules('jam_selesai','Jam_Selesai','required');
+    	$jam_mulai=$this->input->post('jam_mulai');
+    	
+        $jam_selesai=$this->input->post('jam_selesai');
 
-			if($this->form_validation->run() == false){
-				$this->load->view('Ubah_Jadwal',$data);
-			}else{
-				$this->ModPilihan->ubahJadwal($id);
-				$this->session->set_flashdata('info','Data berhasil diubah'); 
-				redirect('jadwal\index','refresh');
-			}
-		}else{
-			$this->load->view('jadwal\Ubah_Jadwal',$data);
-		}
-		// if($this->input->post('hari')){
-		// 		$this->form_validation->set_rules('check_hari','check_jam_mulai','check_jam_selesai','required');
-		// 		$this->ModPilihan->ubahDataPasien($id_pasien);
-		// 		redirect('jadwal/index');
-		// }else{
-		// 		// $data['judul'] = 'Form Ubah Data Pasien';
-		// 		// $data['pasien'] = $this->ModPilihan->getPasienById($id_pasien);
-		// 		$this->load->view('jadwal\Ubah_Jadwal',$data);
-		// }
-	}
+
+    if($hari==''){
+            $result = [
+                'status' => false,
+                'message' => 'Hari Jadwal masih kosong',
+            ];
+        }elseif ($jam_mulai=='') {
+            $result = [
+                'status' => false,
+                'message' => 'jam_mulai masih kosong',
+            ];
+        }elseif ($jam_selesai=='') {
+            $result = [
+                'status' => false,
+                'message' => 'jam_selesai masih kosong',
+            ];
+        }else {
+
+            $data=array(
+                'hari'=>$hari,
+                'jam_mulai'=>$jam_mulai,
+                'jam_selesai'=>$jam_selesai,
+            );
+             $where=array('id_dokter'=>$id_dokter);
+            $this->m->UbahJadwal($data,'jadwal_dokter');
+
+            $result = [
+                'status' => true,
+                'message' => 'Sukses menambah data',
+            ];
+        }
+        echo json_encode($result);
+    }
+
+	function AmbilIdJadwal(){
+			$id_jadwal=$this->input->post('id_jadwal');
+			$where=array('id_jadwal'=> $id_jadwal);
+			$dataJadwal = $this->m->AmbilId('jadwal_dokter',$where)->row();
+
+			echo json_encode($dataJadwal);
+
+    		}
 }
 ?>
 
