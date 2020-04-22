@@ -17,7 +17,7 @@
     <title>Klinik Bona</title>
     <style type="text/css">
       body{
-        background: url("<?php echo base_url()?>assets/dokter4.jpg") no-repeat;
+        /*background: url("<?php echo base_url()?>assets/dokter4.jpg") no-repeat;*/
         background-size: 100% 100%;
         width: 100%;
         height: 100%;
@@ -31,6 +31,10 @@
       }
       p{
         font-family: sans-serif;
+      }
+      .carousel-inner img {
+        width: 80%;
+        height: 60%;
       }
     </style>
   </head>
@@ -49,7 +53,37 @@
         </button>
       </nav>
     </div>
-    <h1 style="padding: 150px; text-align: center;">Welcome to Klinik Bona Website!</h1>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/carousel/web1.jpg" alt="Gambar 1">
+        </div>
+        <div class="carousel-item">
+          <img src="assets/carousel/web2.jpg" alt="Gambar 2">
+        </div>
+        <div class="carousel-item">
+          <img src="assets/carousel/web3.png" alt="Gambar 3">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+
+    </div>
     <footer class="mastfoot mt-auto" style="text-align: center;">
       <div class="inner">
         <p>Tugas Besar - Pemrograman Web</p>

@@ -14,8 +14,8 @@
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Aktivitas<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="<?= site_url('pilihan/Pemeriksaan') ?>">Pemeriksaan Pasien</a></li>
-          <li><a href="<?= site_url('pilihan/Rawat Inap') ?>">Rawat Inap</a></li>
+          <li><a href="<?= site_url('pemeriksaan/index') ?>">Pemeriksaan Pasien</a></li>
+          <li><a href="<?= site_url('rawatInap/index') ?>">Rawat Inap</a></li>
           <li><a href="<?= site_url('plotting/index') ?>">Plotting Dokter</a></li>
         </ul>
       </li>

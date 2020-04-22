@@ -112,5 +112,29 @@ class Input extends CI_Controller {
 		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
 		redirect('pilihan\jadwal');
 	}
+
+	public function inputpemeriksaan()
+	{
+		$data['id_pasien'] = $this->input->post('id_pasien',true);
+		$data['id_dokter'] = $this->input->post('id_dokter',true);
+		$data['deskripsi'] = $this->input->post('deskripsi',true);
+		$data['tanggal'] = $this->input->post('tanggal',true);
+		$cek = $this->ModPilihan->tambahPemeriksaan($data);
+		if($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
+		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
+		redirect('pemeriksaan\index');
+	}
+
+	public function inputrawatinap()
+	{
+		$data['id_pemeriksaan'] = $this->input->post('id_pemeriksaan',true);
+		$data['id_kamar'] = $this->input->post('id_kamar',true);
+		$data['tanggal_masuk'] = $this->input->post('tanggal_masuk',true);
+		$data['tanggal_keluar'] = $this->input->post('tanggal_keluar',true);
+		$cek = $this->ModPilihan->tambahRawatInap($data);
+		if($cek) $this->session->set_flashdata('info','Data Berhasil Ditambahkan!');
+		else $this->session->set_flashdata('info','Data Gagal Ditambahkan!');
+		redirect('rawatInap\index');
+	}
 }
 ?>

@@ -159,9 +159,10 @@ public function TambahPerawat($data,$table)
 	{
 		$keyword = $this->input->post('keyword', true);
 		//use query builder class to search data mahasiswa based on keyword "nama" or "jurusan" or "nim" or "email"
-		$where = "id_pasien='$keyword' OR nama_pasien='$keyword' OR tanggal_lahir='$keyword' OR email='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
-		$this->db->where($where);
-		return $this->db->get('pasien')->result_array();
+		// $where = "id_pasien='$keyword' OR nama_pasien='$keyword' OR tanggal_lahir='$keyword' OR email='$keyword' OR alamat='$keyword' OR kontak='$keyword'";
+		// $this->db->where($where);
+		// return $this->db->get('pasien')->result_array();
+		return $this->db->like('nama_pasien',$keyword)->or_like('tanggal_lahir',$keyword)->or_like('email',$keyword)->or_like('alamat',$keyword)->or_like('kontak',$keyword)->get('pasien')->result_array();
 		//return data mahasiswa that has been searched
 	}
 
@@ -351,5 +352,64 @@ public function TambahPerawat($data,$table)
 
 		return $this->db->query($SQL)->result_array();
 	}
+
+	///////////////////////////////////////PEMERIKSAAN///////////////////////////////////////////////////////////
+	public function getAllPemeriksaan()
+	{
+		$SQL = "SELECT * FROM pemeriksaan A, dokter B, pasien C WHERE A.id_dokter=B.id_dokter AND A.id_pasien=C.id_pasien";
+		return $this->db->query($SQL)->result_array();
+	}
+
+	public function getPemeriksaanById($id)
+	{
+		$SQL = "SELECT * FROM pemeriksaan A, dokter B, pasien C WHERE A.id_dokter=B.id_dokter AND A.id_pasien=C.id_pasien AND A.id_pemeriksaan='$id'";
+		return $this->db->query($SQL)->row_array();
+	}
+
+	public function getPasienPeriksa()
+	{
+		return $this->db->get('pasien')->result_array();
+	}
+
+	public function getDokterPeriksa()
+	{
+		return $this->db->get('dokter')->result_array();
+	}
+
+	public function tambahPemeriksaan($data)
+	{
+		return $this->db->insert('pemeriksaan',$data);
+	}
+
+	public function hapusPemeriksaan($id)
+	{
+		$this->db->where('id_pemeriksaan',$id);
+		return $this->db->delete('pemeriksaan');
+	}
+
+	///////////////////////////////////////PEMERIKSAAN///////////////////////////////////////////////////////////
+	public function getAllRawatInap()
+	{
+		$SQL = "SELECT * FROM rawat_inap A, kamar_inap B, pemeriksaan C, pasien D, dokter E WHERE A.id_kamar=B.id_kamar AND               A.id_pemeriksaan=C.id_pemeriksaan AND C.id_pasien=D.id_pasien AND C.id_dokter=E.id_dokter";
+		return $this->db->query($SQL)->result_array();
+	}
+
+	public function getKamarRawat()
+	{
+		//use query builder to get data table "mahasiswa"
+		return $this->db->get('kamar_inap')->result_array();
+	}
+
+	public function tambahRawatInap($data)
+	{
+		return $this->db->insert('rawat_inap',$data);
+	}
+
+	public function hapusRawatInap($id)
+	{
+		$this->db->where('id_rawat_inap',$id);
+		return $this->db->delete('rawat_inap');
+	}
+
  }
 ?>

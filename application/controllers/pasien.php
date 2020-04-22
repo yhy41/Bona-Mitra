@@ -15,6 +15,9 @@ class pasien extends CI_Controller {
     function indexinfo(){
         
         $data['judul'] = 'Daftar Pasien Info';
+        if ($this->input->post('keyword')) {
+            $data['pasien'] = $this->m->cariDataPasien();
+        }
         $this->load->view('info\Pasien',$data);
     }
 
