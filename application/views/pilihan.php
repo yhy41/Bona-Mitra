@@ -33,7 +33,7 @@
         font-family: sans-serif;
       }
       .carousel-inner img {
-        width: 80%;
+        width: 100%;
         height: 60%;
       }
     </style>
@@ -43,7 +43,7 @@
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
           <h5 class="text-white h5">Login User</h5>
-          <a class="nav-link" href="<?= site_url('pilihan/masukpasien') ?>">Login as Guest</a>
+          <a class="nav-link" href="<?= site_url('plotting/HomePasien') ?>">Login as Guest</a>
           <a class="nav-link" href="<?= site_url('Login/index') ?>">Login as Administrator</a>
         </div>
       </div>

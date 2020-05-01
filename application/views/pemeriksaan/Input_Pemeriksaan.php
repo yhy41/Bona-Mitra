@@ -31,4 +31,4 @@
 <button type="submit" class="btn btn-primary">Kirim</button>
 <a href="<?= site_url('pemeriksaan/index') ?>" class="btn btn-primary">Back</a>
 
-<?php $this->load->view("template/footer.php") ?>
+<?php $this->load->view("template/footer_pasien.php") ?>

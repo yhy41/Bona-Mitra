@@ -19,11 +19,29 @@ class dokter extends CI_Controller {
     }
 	function LihatDokter()
 	{
+         header('Content-Type: application/json');
 		$dataDokter = $this->m->getAllDokter('dokter')->result();
-	
-		echo json_encode($dataDokter);
+	       $result = [
+            'status' => true,
+            'message' => 'data berhasil ditemukan',
+            'data' => $dataDokter
+        ];
+		echo json_encode($result);
 
 	}
+     function searchHandle() {
+        header('Content-Type: application/json');
+        $params = $this->input->post('keyword');
+
+        $dataPasien = $this->m->getAllDokterByKey($params)->result();
+
+        $result = [
+            'status' => true,
+            'message' => 'data dokter berhasil dicari',
+            'data' => $dataPasien
+        ];
+        echo json_encode($result);
+    }
 	public function HapusDokter()
 	{
 		$id_dokter= $this->input->post("id_dokter");

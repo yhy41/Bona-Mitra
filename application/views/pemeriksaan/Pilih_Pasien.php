@@ -60,4 +60,4 @@
             </table>
          </div>
     </div>
-<?php $this->load->view("template/footer.php") ?>
+<?php $this->load->view("template/footer_pasien.php") ?>

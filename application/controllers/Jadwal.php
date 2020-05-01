@@ -17,9 +17,15 @@ class Jadwal extends CI_Controller
 		$this->load->view('jadwal\Lihat_Jadwal',$data);
 	}
 	function LihatJadwal(){
-		$dataJadwal = $this->m->getAllJadwal('jadwal_dokter')->result();
-	
-		echo json_encode($dataJadwal);
+
+         header('Content-Type: application/json');
+            $dataJadwal = $this->m->getAllJadwal('jadwal_dokter')->result();
+            $result = [
+            'status' => true,
+            'message' => 'data berhasil ditemukan',
+            'data' => $dataJadwal
+        ];
+        echo json_encode($result);
 
 	}
 
@@ -35,6 +41,20 @@ class Jadwal extends CI_Controller
         echo json_encode($result,$dataJadwal);
 
 	}
+
+    function searchHandle() {
+        header('Content-Type: application/json');
+        $params = $this->input->post('keyword');
+
+        $dataJadwal = $this->m->getAllJadwalByKey($params)->result();
+
+        $result = [
+            'status' => true,
+            'message' => 'data Jadwal berhasil dicari',
+            'data' => $dataJadwal
+        ];
+        echo json_encode($result);
+    }
 
 	public function TambahJadwal()
 	{

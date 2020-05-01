@@ -18,16 +18,15 @@
 
 
   <div class="row mt-3">
-    <div class="col md-6">
-      <form action="" method="post">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Cari data Dokter ... " name="keyword">
+      <div class="col md-6">
+    <form id="form-search">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Cari perawat ... " name="keyword">
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit">Cari</button>
           </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
    <h2>Jadwal Dokter</h2>
             <br>
@@ -135,14 +134,14 @@
             dataType:'json',
             success: function(data){
                 var baris='';
-               for (var i=0; i<data.length; i++) {
+               for (var i=0; i<data.data.length; i++) {
                     baris += '<tr>'+
                                 '<td>'+(i+1)+'</td>'+
-                                '<td>'+data[i].hari+'</td>'+
-                                '<td>'+data[i].jam_mulai+'</td>'+
-                                '<td>'+data[i].jam_selesai+'</td>'+
-                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data[i].id_jadwal+'">ubah</a>     </td>'+
-                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data[i].id_jadwal+'">hapus</a></td>'+
+                                '<td>'+data.data[i].hari+'</td>'+
+                                '<td>'+data.data[i].jam_mulai+'</td>'+
+                                '<td>'+data.data[i].jam_selesai+'</td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_jadwal+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_jadwal+'">hapus</a></td>'+
                             '</tr>'
 
 // onclick="ubahdata('+data[i].id_pasien+')"        
@@ -274,7 +273,39 @@
 
  }
 
+  $('#form-search').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+                    type:'POST',
+                    url:'<?php echo base_url()?>index.php/Jadwal/searchHandle',
+                    data: $('#form-search').serialize(),
+                    dataType:'json',
+                    success: function(data){
+                        var baris='';
+                       for (var i=0; i<data.data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data.data[i].hari+'</td>'+
+                                '<td>'+data.data[i].jam_mulai+'</td>'+
+                                '<td>'+data.data[i].jam_selesai+'</td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_jadwal+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_jadwal+'">hapus</a></td>'+
+                            '</tr>'
+
+// onclick="ubahdata('+data[i].id_pasien+')"        
+
+                    }
+                        $('#target-perawat').html(baris);
+                        $('.buttonubah').on('click',ubahdata);
+                        $('.buttonhapus').on('click',HapusData);
+
+
+                    }
+
+        });
+    });
+
 
 </script>
 
-<?php $this->load->view("template/footer.php") ?>
+<?php $this->load->view("template/footer_pasien.php") ?>

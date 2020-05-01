@@ -1,72 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Informasi-Klinik</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style type="text/css">
-    body{
-      background: url("<?php echo base_url()?>assets/dokter6.jpg") no-repeat;
-    }
-      h3{
-      font-family: fantasy;
-      text-transform: uppercase;
-      color: #008B8B;
-    }
-  </style>
-</head>
-<body>
+<?php $this->load->view("template/header_home.php") ?>
+<?php $this->load->view("template_Guest/navbar.php") ?>
+  
+  <h1 >Tentang Kami</h1>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="">Klinik Bona</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="<?= site_url('pilihan/masukpasien') ?>">Home</a></li>
-      <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Pasien</a></li>
-          <li><a href="#">Dokter</a></li>
-          <li><a href="#">Perawat</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Masukan<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Saran</a></li>
-          <li><a href="#">Komentar</a></li>
-          <li><a href="#">Kritik</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Kontak</a></li>
-      <li><a href="#">Page 3</a></li> -->
-    </ul>
+ <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31805.719324237172!2d104.87867138047012!3d-4.818935012000646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e38a8c34478c437%3A0xf70e2cc30246368!2sKotabumi%2C%20North%20Lampung%20Regency%2C%20Lampung!5e0!3m2!1sen!2sid!4v1587803077296!5m2!1sen!2sid" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
   </div>
-</nav>
 <div class = "container bg-dark text-white">
-  <img src="<?php echo base_url()?>assets/dokter1.jfif" alt="logo" class="img-thumbnail">
-  <h1 class="display-3">Tentang Kami</h1>
-  <p>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</p>
-  <p>Klinik ini berdiri pada tahun 2020 karena tuntutan tugas dari dosen mata kuliah pemrograman web</p>
+
+  
+
+  
+  <h1>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</h1>
+  <h1>Klinik ini berdiri pada tahun 2020 karena tuntutan tugas dari dosen mata kuliah pemrograman web</h1>
 </div>
-<!-- <div class="media">
-  <img src="<?php echo base_url()?>assets/dokter1.jfif" class="align-self-center mr-3" alt="logo">
-  <div class="media-body">
-    <h5 class="mt-0">Tentang Kami</h5>
-    <p>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</p>
-    <p class="mb-0">Klinik ini berdiri pada tahun 2020 karena tuntutan tugas dari dosen mata kuliah pemrograman web</p>
-  </div>
-</div> -->
 
-<!-- <div class="container">
-  <h3>Kami adalah klinik bona yang dibentuk untuk melayani masyarakat tanpa pamrih</h3>
-  <p>Kami Hadir Untuk Anda</p>
-  <p>Anda Adalah Prioritas Kami</p>
-  <p>Kesehatan Masyarakat Hal Yang Paling Penting</p>
-</div> -->
-
-</body>
-</html>
+<?php $this->load->view("template_Guest/footer.php") ?>

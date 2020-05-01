@@ -18,11 +18,30 @@ class perawat extends CI_Controller {
     }
 	function LihatPerawat()
 	{
+
+        header('Content-Type: application/json');
 		$dataPerawat = $this->m->getAllPerawat('perawat')->result();
-	
-		echo json_encode($dataPerawat);
+	       $result = [
+            'status' => true,
+            'message' => 'data berhasil ditemukan',
+            'data' => $dataPerawat
+        ];
+		echo json_encode($result);
 
 	}
+    function searchHandle() {
+        header('Content-Type: application/json');
+        $params = $this->input->post('keyword');
+
+        $dataPasien = $this->m->getAllPerawatByKey($params)->result();
+
+        $result = [
+            'status' => true,
+            'message' => 'data Perawat berhasil dicari',
+            'data' => $dataPasien
+        ];
+        echo json_encode($result);
+    }
 	public function HapusPerawat()
 	{
 		$id_perawat= $this->input->post("id_perawat");

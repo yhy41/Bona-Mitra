@@ -21,6 +21,27 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<style type="text/css">
+    h3{
+      font-family: fantasy;
+      text-transform: uppercase;
+      color: #008B8B;
+    }
+    body{
+      background: url("<?php echo base_url()?>assets/cubes.png") repeat;
+       width: 100%;
+      height: 100%;
+    }
+    .footer {
+    position: static;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    text-align: center;
+    margin-top: 55%;
+  }
+  </style>
 </head>
 <body>
 <div class="">

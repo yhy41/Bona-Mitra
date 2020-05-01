@@ -1,5 +1,5 @@
 <?php $this->load->view("template/header_pasien.php") ?>
-<?php $this->load->view("template_Info/navbar.php") ?>
+<?php $this->load->view("template_Guest/navbar.php") ?>
 <style type="text/css">
   body{
     background: url("<?php echo base_url()?>assets/nurse.jpg") no-repeat;
@@ -9,6 +9,15 @@
       text-transform: uppercase;
       color: #008B8B;
   }
+   .footer {
+    position: static;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    text-align: center;
+    margin-top: 40%;
+  }
   table    { border:ridge 1px black; background-color:#C0C0C0; color:black; }
   table td { border:inset 1px black; }
 </style>
@@ -17,7 +26,7 @@
 
 <div class="container">
   <div class="col md-6">
-    <form action="" method="post">
+    <form id="form-search">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Cari perawat ... " name="keyword">
           <div class="input-group-append">
@@ -49,12 +58,12 @@
             dataType:'json',
             success: function(data){
                 var baris='';
-               for (var i=0; i<data.length; i++) {
+               for (var i=0; i<data.data.length; i++) {
                     baris += '<tr>'+
                                 '<td>'+(i+1)+'</td>'+
-                                '<td>'+data[i].nama_perawat+'</td>'+
-                                '<td>'+data[i].alamat+'</td>'+
-                                '<td>'+data[i].kontak+'</td>'+
+                                '<td>'+data.data[i].nama_perawat+'</td>'+
+                                '<td>'+data.data[i].alamat+'</td>'+
+                                '<td>'+data.data[i].kontak+'</td>'+
                             '</tr>'
 
 // onclick="ubahdata('+data[i].id_pasien+')"        
@@ -67,5 +76,33 @@
     }
 
 
+     $('#form-search').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+                    type:'POST',
+                    url:'<?php echo base_url()?>index.php/perawat/searchHandle',
+                    data: $('#form-search').serialize(),
+                    dataType:'json',
+                    success: function(data){
+                        var baris='';
+                       for (var i=0; i<data.data.length; i++) {
+                            baris += '<tr>'+
+                                        '<td>'+(i+1)+'</td>'+
+                                        '<td>'+data.data[i].nama_perawat+'</td>'+
+                                        '<td>'+data.data[i].alamat+'</td>'+
+                                        '<td>'+data.data[i].kontak+'</td>'+
+                                    '</tr>'
+
+        // onclick="ubahdata('+data[i].id_pasien+')"        
+
+                        }
+                        $('#target-perawat').html(baris);
+
+                    }
+
+        });
+    });
+
+
   </script>
-<?php $this->load->view("template/footer.php") ?>
+<?php $this->load->view("template_Guest/footer.php") ?>

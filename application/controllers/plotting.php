@@ -20,6 +20,20 @@ class Plotting extends CI_Controller
 		$this->load->view('plotting\Lihat_Plotting',$data);
 	}
 
+	function HomePasien(){
+		$data['judul'] = 'Plotting Jadwal Dokter';
+		$data['plot'] = $this->ModPilihan->getPlotHome();
+		if ($this->input->post('keyword')) {
+			$data['plot'] = $this->ModPilihan->cariPlot();
+		}
+		$data['judul'] = 'Riwayat Rawat Inap Pasien';
+		$data['rawat'] = $this->ModPilihan->getAllRawatInap();
+		if ($this->input->post('keyword')) {
+			$data['periksa'] = $this->ModPilihan->cariRawatInap();
+		}
+		$this->load->view('home/Home_pasien',$data);
+	}
+
 	public function PilihDokter()
 	{
 		$data['judul'] = 'Input Plotting Dokter';

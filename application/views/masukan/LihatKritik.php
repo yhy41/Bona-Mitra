@@ -1,4 +1,4 @@
-<?php $this->load->view("template/header.php") ?>
+<?php $this->load->view("template/header_pasien.php") ?>
 <?php $this->load->view("template/navbar.php") ?>
 
 <div class="container">
@@ -96,4 +96,4 @@
  }
 
 </script>
-<?php $this->load->view("template/footer.php") ?>
+<?php $this->load->view("template/footer_pasien.php") ?>

@@ -1,16 +1,6 @@
-<?php $this->load->view("template/header_pasien.php") ?>
+<?php $this->load->view("template/header_home.php") ?>
 <?php $this->load->view("template_Guest/navbar.php") ?>
-<style type="text/css">
-  body{
-      background: url("<?php echo base_url()?>assets/rs1.jpg") no-repeat;
-      background-size: 100%;
-    }
-  h2{
-      font-family: fantasy;
-      text-transform: uppercase;
-      color: #008B8B;
-    }
-</style>
+
 
     <!-- isi -->
 
@@ -32,25 +22,19 @@
             </div>
         </div>
     </div>
-  <form>
+  <form id="form-saran">
     <div class="form-group">
       <label for="email">Nama :</label>
       <input type="input" class="form-control" id="email" placeholder="Enter nama" name="nama_tamu">
     </div>
     <div class="form-group">
       <label for="pwd">Kategori :</label>
-      <div class="form-check-inline">
-        <?= form_radio('kategori','Saran','true', ['class'=>'form-check-input']) ?>
-        Saran
-      </div>
-      <div class="form-check-inline">
-        <?= form_radio('kategori','Kritik','', ['class'=>'form-check-input']) ?>
-        Kritik
-      </div>
-      <div class="form-check-inline">
-        <?= form_radio('kategori','Komentar','', ['class'=>'form-check-input']) ?>
-        Komentar
-      </div>
+      <select class="form-control" name="kategori">
+        <option value="">Pilih Kategori</option>
+        <option value="Saran">Saran</option>
+        <option value="Kritik">Kritik</option>
+        <option value="Komentar">Komentar</option>
+      </select>
     </div>
   
     <div class="form-group">
@@ -64,22 +48,18 @@
     <div class="checkbox">
       <label style="color: red;"><input type="checkbox" name="Pernyataan"><b>saya menyatakan ini dengan Kondisi Normal</b> </label>
     </div>
-    <button type="button" id="btn-tambah" onclick="Tambah()"  class="btn-primary">Tamnbah</button>
+    <button type="submit" class="btn-primary">Tamnbah</button>
 
 <script type="text/javascript">
-  
-function Tambah(){
+  $('#form-saran').on('submit', (e) => {
+        e.preventDefault();
+        
         $('.alert-success').hide();
         $('.alert-danger').hide();
-        var nama_tamu =$("[name='nama_tamu']").val();
-        var kategori =$("[name='kategori']").val();
-        var email_tamu =$("[name='email_tamu']").val();
-        var isi =$("[name='isi']").val();
-
 
         $.ajax({
             type:'POST',
-            data:'nama_tamu='+nama_tamu+'&kategori='+kategori+'&email_tamu='+email_tamu+'&isi='+isi,
+            data: $('#form-saran').serialize(),
             url:'<?php echo base_url().'index.php/Input_Masukan/feedback' ?>',
             dataType:'json',
             success:function(hasil){
@@ -98,7 +78,6 @@ function Tambah(){
             }
         });
 
-    }
-
+    });
 </script>
 <?php $this->load->view("template/footer_pasien.php") ?>

@@ -1,4 +1,4 @@
-<?php $this->load->view("template/header_pasien.php") ?>
+<?php $this->load->view("template/header_dokter.php") ?>
 <?php $this->load->view("template/navbar.php") ?>
 
 
@@ -20,12 +20,12 @@
 
     <div class="row mt-3">
         <div class="col md-6">
-            <form action="" method="post">
+            <form id="form-search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari data Perawat ... " name="keyword">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Cari</button>
-                    </div>
+                    <input type="text" class="form-control" placeholder="Cari dokter ... " name="keyword">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Cari</button>
+                        </div>
                 </div>
             </form>
         </div>
@@ -105,7 +105,7 @@
                             <tr>
                                 <td>Nama Dokter</td>
                                 <td><input type="text" name="nama_dokter1" placeholder="input_nama" class="form-control"  id="nama_pasien"/>
-                                    <input type="text" name="id_dokter1" value="" />
+                                    <input type="text" name="id_dokter1" value="" readonly>
                                 </td>
                             </tr>
                             <tr>
@@ -147,14 +147,14 @@
             dataType:'json',
             success: function(data){
                 var baris='';
-               for (var i=0; i<data.length; i++) {
+               for (var i=0; i<data.data.length; i++) {
                     baris += '<tr>'+
                                 '<td>'+(i+1)+'</td>'+
-                                '<td>'+data[i].nama_dokter+'</td>'+
-                                '<td>'+data[i].alamat+'</td>'+
-                                '<td>'+data[i].kontak+'</td>'+
-                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data[i].id_dokter+'">ubah</a>     </td>'+
-                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data[i].id_dokter+'">hapus</a></td>'+
+                                '<td>'+data.data[i].nama_dokter+'</td>'+
+                                '<td>'+data.data[i].alamat+'</td>'+
+                                '<td>'+data.data[i].kontak+'</td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_dokter+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_dokter+'">hapus</a></td>'+
                             '</tr>'
 
 // onclick="ubahdata('+data[i].id_pasien+')"        
@@ -287,6 +287,36 @@
  }
 
 
+     $('#form-search').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+                    type:'POST',
+                    url:'<?php echo base_url()?>index.php/dokter/searchHandle',
+                    data: $('#form-search').serialize(),
+                    dataType:'json',
+                    success: function(data){
+                        var baris='';
+                       for (var i=0; i<data.data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data.data[i].nama_dokter+'</td>'+
+                                '<td>'+data.data[i].alamat+'</td>'+
+                                '<td>'+data.data[i].kontak+'</td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_dokter+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_dokter+'">hapus</a></td>'+
+                            '</tr>'
+
+       
+
+                    }
+                        $('#target-perawat').html(baris);
+                        $('.buttonubah').on('click',ubahdata);
+                        $('.buttonhapus').on('click',HapusData);
+
+                    }
+
+        });
+    });
 </script>
 
 <?php $this->load->view("template/footer_pasien.php") ?>

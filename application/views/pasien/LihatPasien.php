@@ -20,18 +20,18 @@
             </div>
         </div>
         
- <!--    <div class="row mt-3">
+    <div class="row mt-3">
         <div class="col md-6">
-            <form action="" method="post">
+            <form id="form-search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari data Pasien ... " name="keyword">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Cari</button>
-                    </div>
+                    <input type="text" class="form-control" placeholder="Cari Pasien ... " name="keyword">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Cari</button>
+                        </div>
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
 
     <div class="row mt-5">
         <div class="col">
@@ -112,7 +112,7 @@
                             <tr>
                                 <td>Nama Paseine</td>
                                 <td><input type="text" name="nama_pasien1" placeholder="input_pasien" class="form-control"  id="nama_pasien"/>
-                                    <input type="text" name="id_pasien1" value="" />
+                                    <input type="text" name="id_pasien1" value="" readonly/>
                                 </td>
                             </tr>
                             <tr>
@@ -162,16 +162,16 @@
             dataType:'json',
             success: function(data){
                 var baris='';
-               for (var i=0; i<data.length; i++) {
+               for (var i=0; i<data.data.length; i++) {
                     baris += '<tr>'+
                                 '<td>'+(i+1)+'</td>'+
-                                '<td>'+data[i].nama_pasien+'</td>'+
-                                '<td>'+data[i].tanggal_lahir+'</td>'+
-                                '<td>'+data[i].alamat+'</td>'+
-                                '<td>'+data[i].email+'</td>'+
-                                '<td>'+data[i].kontak+'</td>'+
-                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data[i].id_pasien+'">ubah</a>     </td>'+
-                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data[i].id_pasien+'">hapus</a></td>'+
+                                '<td>'+data.data[i].nama_pasien+'</td>'+
+                                '<td>'+data.data[i].tanggal_lahir+'</td>'+
+                                '<td>'+data.data[i].alamat+'</td>'+
+                                '<td>'+data.data[i].email+'</td>'+
+                                '<td>'+data.data[i].kontak+'</td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_pasien+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_pasien+'">hapus</a></td>'+
                             '</tr>'
 
 // onclick="ubahdata('+data[i].id_pasien+')"        
@@ -311,6 +311,39 @@
 
     }
 
+  $('#form-search').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+                    type:'POST',
+                    url:'<?php echo base_url()?>index.php/pasien/searchHandle',
+                    data: $('#form-search').serialize(),
+                    dataType:'json',
+                    success: function(data){
+                        var baris='';
+                     for (var i=0; i<data.data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data.data[i].nama_pasien+'</td>'+
+                                '<td>'+data.data[i].tanggal_lahir+'</td>'+
+                                '<td>'+data.data[i].alamat+'</td>'+
+                                '<td>'+data.data[i].email+'</td>'+
+                                '<td>'+data.data[i].kontak+'</td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_pasien+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_pasien+'">hapus</a></td>'+
+                            '</tr>'
+
+// onclick="ubahdata('+data[i].id_pasien+')"        
+
+                    }
+                        $('#target-pasien').html(baris);
+                        $('.buttonubah').on('click',ubahdata);
+                        $('.buttonhapus').on('click',HapusData);
+
+
+                    }
+
+        });
+    });
 
 </script>
 

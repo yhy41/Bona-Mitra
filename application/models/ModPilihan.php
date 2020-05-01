@@ -121,6 +121,28 @@ public function TambahPerawat($data,$table)
 		return $this->db->get($table);
 	}
 
+	function getAllPasienByKey($params)
+	{
+		//use query builder to get data table "mahasiswa"
+		return $this->db->like('nama_pasien', $params, 'both')->or_like('email', $params, 'both')->get('pasien');
+	}
+
+	function getAllDokterByKey($params)
+	{
+		//use query builder to get data table "mahasiswa"
+		return $this->db->like('nama_dokter', $params, 'both')->or_like('alamat', $params, 'both')->get('dokter');
+	}
+	function getAllPerawatByKey($params)
+	{
+		//use query builder to get data table "mahasiswa"
+		return $this->db->like('nama_perawat', $params, 'both')->or_like('alamat', $params, 'both')->get('perawat');
+	}
+	function getAllJadwalByKey($params)
+	{
+		//use query builder to get data table "mahasiswa"
+		return $this->db->like('hari', $params, 'both')->get('jadwal_dokter');
+	}
+
 	function UpdatePasien($where,$data,$table)
 	{
 		$this->db->where($where);
@@ -330,6 +352,13 @@ public function TambahPerawat($data,$table)
 		return $this->db->query($SQL)->result_array();
 	}
 
+	public function getPlotHome(){
+		$SQL = "SELECT * FROM plotting_dokter A, dokter B, jadwal_dokter C WHERE A.id_dokter=B.id_dokter AND A.id_jadwal=C.id_jadwal";
+		return $this->db->query($SQL)->result_array();
+		$SQL = "SELECT * FROM rawat_inap A, kamar_inap B, pemeriksaan C, pasien D, dokter E WHERE A.id_kamar=B.id_kamar AND               A.id_pemeriksaan=C.id_pemeriksaan AND C.id_pasien=D.id_pasien AND C.id_dokter=E.id_dokter";
+		return $this->db->query($SQL)->result_array();
+	}
+
 	public function tambahPlotting($id_jadwal,$id_dokter)
 	{
 		$data['id_jadwal'] = $id_jadwal;
@@ -352,6 +381,10 @@ public function TambahPerawat($data,$table)
 
 		return $this->db->query($SQL)->result_array();
 	}
+
+
+
+
 
 	///////////////////////////////////////PEMERIKSAAN///////////////////////////////////////////////////////////
 	public function getAllPemeriksaan()

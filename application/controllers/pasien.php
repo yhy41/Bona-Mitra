@@ -21,12 +21,30 @@ class pasien extends CI_Controller {
         $this->load->view('info\Pasien',$data);
     }
 
+    function searchHandle() {
+        header('Content-Type: application/json');
+        $params = $this->input->post('keyword');
+
+        $dataPasien = $this->m->getAllPasienByKey($params)->result();
+
+        $result = [
+            'status' => true,
+            'message' => 'data berhasil dicari',
+            'data' => $dataPasien
+        ];
+        echo json_encode($result);
+    }
+
 	function LihatPasien()
 	{
+        header('Content-Type: application/json');
 		$dataPasien = $this->m->getAllPasien('pasien')->result();
-	
-		echo json_encode($dataPasien);
-
+	    $result = [
+            'status' => true,
+            'message' => 'data berhasil ditemukan',
+            'data' => $dataPasien
+        ];
+		echo json_encode($result);
 	}
 
 	public function HapusPasien()
