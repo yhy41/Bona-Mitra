@@ -1,4 +1,4 @@
-<?php $this->load->view("template/header_pasien.php") ?>
+<?php $this->load->view("template/header.php") ?>
 <?php $this->load->view("template/navbar.php") ?>
 
 
@@ -22,7 +22,7 @@
     </div>
 
 
-    <div class="row mt-">
+    <!-- <div class="row mt-">
         <div class="col md-4">
             <form action="" method="post">
                 <div class="input-group">
@@ -33,10 +33,18 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
     <div class="row mt-5">
         <div class="col">
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cari nama Kamar ... " name="keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
+                </div>
+            </form>
             <br>
               <a href="#form" data-toggle="modal" class="btn btn-primary">tambah data</a>
             </br>

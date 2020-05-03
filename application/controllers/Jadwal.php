@@ -100,7 +100,7 @@ class Jadwal extends CI_Controller
 
 
 
-	public function ubah($id)
+	public function ubah()
 	{
 		$id_jadwal=$this->input->post('id_jadwal');
 

@@ -65,13 +65,25 @@
       <!-- The slideshow -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="assets/carousel/web1.jpg" alt="Gambar 1">
+          <img src="<?php echo base_url()?>/assets/carousel/web1.jpg" alt="Gambar 1">
+          <div class="carousel-caption">
+            <h1 style="color: black">Klinik Bona</h3>
+            <h3 style="color: black">Kami Siap Melayani Anda!</p>
+          </div>
         </div>
         <div class="carousel-item">
-          <img src="assets/carousel/web2.jpg" alt="Gambar 2">
+          <img src="<?php echo base_url()?>/assets/carousel/web2.jpg" alt="Gambar 2">
+          <div class="carousel-caption">
+            <h1 style="color: black">Klinik Bona</h3>
+            <h3 style="color: black">Jangan Lupa Sakit Hari Ini!</p>
+          </div>
         </div>
         <div class="carousel-item">
-          <img src="assets/carousel/web3.png" alt="Gambar 3">
+          <img src="<?php echo base_url()?>/assets/carousel/web3.png" alt="Gambar 3">
+          <div class="carousel-caption">
+            <h1 style="color: black">Klinik Bona</h3>
+            <h3 style="color: black">Kelebihan: "Pengguna BPJS tidak lagi mengantri!"</p>
+          </div>
         </div>
       </div>
 

@@ -18,8 +18,9 @@
                 </button>
             </div>
 
-    <div class="row mt-3">
-        <div class="col md-6">
+    <div class="row mt-5">
+        <div class="col">
+            <h3 class="text-center">Daftar Dokter</h3>
             <form id="form-search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari dokter ... " name="keyword">
@@ -28,24 +29,12 @@
                         </div>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col">
-            <h3 class="text-center">Daftar Dokter</h3>
-            <!-- <?php if (empty($perawat)) : ?>
-            <div class="alert alert-danger" role="alert">
-                Data tidak ditemukan
-            </div>
-            <?php endif; ?> -->
             <br>
                 <a href="#form" data-toggle="modal" class="btn btn-primary">tambah data</a>
             </br>
             <table class="table mt-5">
                 <thead>
                     <tr>
-                        <!-- <th class="text-center" scope="col">NoId</th> -->
                         <th class="text-left" scope="col">No</th>
                         <th class="text-left" scope="col">Nama</th>
                         <th class="text-left" scope="col">Alamat</th>
@@ -67,20 +56,20 @@
                         <table class="table">
                             <tr>
                                 <td>Nama Dokter</td>
-                                <td><input type="text" name="nama_dokter" placeholder="input_nama" class="form-control" /></td>
+                                <td><input type="text" name="nama_dokter" placeholder="nama dokter" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" name="alamat" placeholder="input_alamat" class="form-control" /></td>
+                                <td><input type="text" name="alamat" placeholder="alamat dokter" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Kontak</td>
-                                <td><input type="text" name="kontak" placeholder="input_kontak" class="form-control"/></td>
+                                <td><input type="text" name="kontak" placeholder="kontak dokter" class="form-control"/></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button type="button" id="btn-tambah" onclick="TambahDokter()"  class="btn-primary">Tamnbah</button>
+                                    <button type="button" id="btn-tambah" onclick="TambahDokter()"  class="btn-primary">Tambah</button>
 
                                     <button type="button" data-dismiss="modal" class="btn-primary">Batal</button>
                                 </td>
@@ -90,11 +79,8 @@
                     </div>
                 </div>
             </div>
-
-
-
             <!-- MODAL EDIT -->
-        <div class="modal fade" id="formUbah" role="dialog">
+            <div class="modal fade" id="formUbah" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -104,17 +90,17 @@
                         <table class="table">
                             <tr>
                                 <td>Nama Dokter</td>
-                                <td><input type="text" name="nama_dokter1" placeholder="input_nama" class="form-control"  id="nama_pasien"/>
+                                <td><input type="text" name="nama_dokter1" placeholder="nama dokter" class="form-control"  id="nama_pasien"/>
                                     <input type="text" name="id_dokter1" value="" readonly>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" name="alamat1" placeholder="input_pasien" class="form-control" id="alamat" /></td>
+                                <td><input type="text" name="alamat1" placeholder="alamat dokter" class="form-control" id="alamat" /></td>
                             </tr>
                             <tr>
                                 <td>Kontak</td>
-                                <td><input type="text" name="kontak1" placeholder="input_pasien" class="form-control"  id="kontak" /></td>
+                                <td><input type="text" name="kontak1" placeholder="kontak dokter" class="form-control"  id="kontak" /></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -130,10 +116,7 @@
                     </div>
                 </div>
             </div>
-        <!--END MODAL EDIT-->
-
-           
-                      
+        <!--END MODAL EDIT-->                      
         </div>
     </div>
 </div>
@@ -155,10 +138,7 @@
                                 '<td>'+data.data[i].kontak+'</td>'+
                                 '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_dokter+'">ubah</a>     </td>'+
                                 '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_dokter+'">hapus</a></td>'+
-                            '</tr>'
-
-// onclick="ubahdata('+data[i].id_pasien+')"        
-
+                            '</tr>'       
                 }
                 $('#target-perawat').html(baris);
                 $('.buttonubah').on('click',ubahdata);
@@ -270,24 +250,24 @@
 
 
     function HapusData() {
-        var tanya = confirm('apakaha antum yakin menghapus data ini ???');
+        var tanya = confirm('Apakah Antum Yakin Menghapus Data Ini ???');
         var id_dokter=$(this).attr("id");
-    if(tanya){
-        $.ajax({
-            type:'POST',
-            data :{id_dokter:id_dokter},
-            url:'<?php echo base_url().'index.php/dokter/HapusDokter' ?>',
-            success:function(){
-                ambilData();
+        if(tanya){
+            $.ajax({
+                type:'POST',
+                data :{id_dokter:id_dokter},
+                url:'<?php echo base_url().'index.php/dokter/HapusDokter' ?>',
+                success:function(){
+                    ambilData();
 
-            }
-        });
-    } 
+                }
+            });
+        } 
 
- }
+    }
 
 
-     $('#form-search').on('submit', (e) => {
+    $('#form-search').on('submit', (e) => {
         e.preventDefault();
         $.ajax({
                     type:'POST',

@@ -15,7 +15,7 @@ class RawatInap extends CI_Controller
 		$data['judul'] = 'Riwayat Rawat Inap Pasien';
 		$data['rawat'] = $this->ModPilihan->getAllRawatInap();
 		if ($this->input->post('keyword')) {
-			$data['periksa'] = $this->ModPilihan->cariRawatInap();
+			$data['rawat'] = $this->ModPilihan->cariRawatInap();
 		}
 		$this->load->view('rawatInap\Lihat_RawatInap',$data);
 	}

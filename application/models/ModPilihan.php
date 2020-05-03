@@ -377,7 +377,7 @@ public function TambahPerawat($data,$table)
 	{
 		$keyword = $this->input->post('keyword', true);
 
-		$SQL = "SELECT * FROM plotting_dokter A, dokter B, jadwal_dokter C WHERE A.id_dokter=B.id_dokter AND A.id_jadwal=C.id_jadwal AND (B.nama_dokter LIKE '$keyword' OR C.hari LIKE '$keyword' OR C.jam_mulai LIKE '$keyword' OR C.jam_selesai LIKE '$keyword')";
+		$SQL = "SELECT * FROM plotting_dokter A, dokter B, jadwal_dokter C WHERE A.id_dokter=B.id_dokter AND A.id_jadwal=C.id_jadwal AND (B.nama_dokter LIKE '%$keyword%' OR C.hari LIKE '%$keyword%' OR C.jam_mulai LIKE '%$keyword$' OR C.jam_selesai LIKE '%$keyword%')";
 
 		return $this->db->query($SQL)->result_array();
 	}
@@ -420,7 +420,16 @@ public function TambahPerawat($data,$table)
 		return $this->db->delete('pemeriksaan');
 	}
 
-	///////////////////////////////////////PEMERIKSAAN///////////////////////////////////////////////////////////
+	public function cariPemeriksaan()
+	{
+		$keyword = $this->input->post('keyword', true);
+
+		$SQL = "SELECT * FROM pemeriksaan A, dokter B, pasien C WHERE A.id_dokter=B.id_dokter AND A.id_pasien=C.id_pasien AND ( B.nama_dokter LIKE '%$keyword%' OR C.nama_pasien LIKE '%$keyword%' OR A.deskripsi LIKE '%$keyword%' OR A.tanggal LIKE '%$keyword%')";
+
+		return $this->db->query($SQL)->result_array();
+	}
+
+	///////////////////////////////////////RAWAT INAP///////////////////////////////////////////////////////////
 	public function getAllRawatInap()
 	{
 		$SQL = "SELECT * FROM rawat_inap A, kamar_inap B, pemeriksaan C, pasien D, dokter E WHERE A.id_kamar=B.id_kamar AND               A.id_pemeriksaan=C.id_pemeriksaan AND C.id_pasien=D.id_pasien AND C.id_dokter=E.id_dokter";
@@ -442,6 +451,15 @@ public function TambahPerawat($data,$table)
 	{
 		$this->db->where('id_rawat_inap',$id);
 		return $this->db->delete('rawat_inap');
+	}
+
+	public function cariRawatInap()
+	{
+		$keyword = $this->input->post('keyword', true);
+
+		$SQL = "SELECT * FROM rawat_inap A, kamar_inap B, pemeriksaan C, pasien D, dokter E WHERE A.id_kamar=B.id_kamar AND               A.id_pemeriksaan=C.id_pemeriksaan AND C.id_pasien=D.id_pasien AND C.id_dokter=E.id_dokter AND (B.nama_kamar LIKE '%$keyword%' OR E.nama_dokter LIKE '%$keyword%' OR D.nama_pasien LIKE '%$keyword%' OR C.deskripsi LIKE '%$keyword%' OR A.tanggal_masuk LIKE '%$keyword%' OR A.tanggal_keluar LIKE '%$keyword%')";
+
+		return $this->db->query($SQL)->result_array();
 	}
 
  }

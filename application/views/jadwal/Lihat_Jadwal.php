@@ -17,18 +17,16 @@
             </div>
 
 
-  <div class="row mt-3">
-      <div class="col md-6">
-    <form id="form-search">
+  <div class="row mt-5">
+    <h2 class = "text-center">Jadwal Dokter</h2>
+     <form id="form-search">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Cari perawat ... " name="keyword">
+        <input type="text" class="form-control" placeholder="Cari jadwal ... " name="keyword">
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit">Cari</button>
           </div>
       </div>
     </form>
-  </div>
-   <h2>Jadwal Dokter</h2>
             <br>
                 <a href="#form" data-toggle="modal" class="btn btn-primary">tambah data</a>
             </br>
@@ -58,20 +56,20 @@
                         <table class="table">
                             <tr>
                                 <td>Hari</td>
-                                <td><input type="text" name="hari" placeholder="input_Hari" class="form-control" /></td>
+                                <td><input type="text" name="hari" placeholder="hari" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>JAM MULAI</td>
-                                <td><input type="text" name="jam_mulai" placeholder="input_JAM_MULAI" class="form-control" /></td>
+                                <td><input type="text" name="jam_mulai" placeholder="jam mulai" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>JAM SELESAI</td>
-                                <td><input type="text" name="jam_selesai" placeholder="input_JAM_Selesai" class="form-control"/></td>
+                                <td><input type="text" name="jam_selesai" placeholder="jam selesai" class="form-control"/></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button type="button" id="btn-tambah" onclick="TambahJadwal()"  class="btn-primary">Tamnbah</button>
+                                    <button type="button" id="btn-tambah" onclick="TambahJadwal()"  class="btn-primary">Tambah</button>
 
                                     <button type="button" data-dismiss="modal" class="btn-primary">Batal</button>
                                 </td>
@@ -95,17 +93,17 @@
                         <table class="table">
                             <tr>
                                 <td>Hari</td>
-                                <td><input type="text" name="hari1" placeholder="input_Hari" class="form-control"  id="nama_pasien"/>
+                                <td><input type="text" name="hari1" placeholder="hari" class="form-control"  id="hari1"/>
                                     <input type="text" name="id_jadwal1" value="" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>JAM MULAI</td>
-                                <td><input type="text" name="jam_mulai1" placeholder="input_JAM_MULAI" class="form-control" id="alamat" /></td>
+                                <td><input type="text" name="jam_mulai1" placeholder="jam mulai" class="form-control" id="jam_mulai1" /></td>
                             </tr>
                             <tr>
                                 <td>JAM SELESAI</td>
-                                <td><input type="text" name="jam_selesai1" placeholder="input_JAM_Selesai" class="form-control"  id="kontak" /></td>
+                                <td><input type="text" name="jam_selesai1" placeholder="jam selesai" class="form-control"  id="jam_selesai1" /></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -234,7 +232,7 @@
         $.ajax({
             type:'POST',
              data:'id_jadwal='+id_jadwal+'&hari='+hari+'&jam_mulai='+jam_mulai+'&jam_selesai='+jam_selesai,
-             url:'<?php echo base_url().'index.php/jadwal/UbahJadwal' ?>',
+             url:'<?php echo base_url().'index.php/jadwal/ubah' ?>',
              dataType:'json',
              success:function(hasil){
                  $("#pesan").html(hasil.pesan);

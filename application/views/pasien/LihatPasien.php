@@ -4,24 +4,21 @@
             <!-- form dari input edit hapus dan lihat dari pasien -->
 
 <div class="container">
-    <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible" role="alert" style="display: none">
-                
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+    <div class="alert alert-success alert-dismissible" role="alert" style="display: none">      
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-            <div class="alert alert-danger alert-dismissible" role="alert" style="display: none">
-                
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-        
-    <div class="row mt-3">
-        <div class="col md-6">
+    <div class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <h3 class="text-center">Daftar Pasien</h3>
             <form id="form-search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari Pasien ... " name="keyword">
@@ -30,14 +27,7 @@
                         </div>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col">
-            <h3 class="text-center">Daftar Pasien</h3>
-            
-             <br>
+            <br>
                 <a href="#form" data-toggle="modal" class="btn btn-primary">tambah data</a>
             </br>
             <table class="table mt-5">
@@ -65,29 +55,29 @@
                       <center><font color="red"><p id="pesan"></p></font></center>
                         <table class="table">
                             <tr>
-                                <td>Nama Paseine</td>
-                                <td><input type="text" name="nama_pasien" placeholder="input_pasien" class="form-control" /></td>
+                                <td>Nama Pasien</td>
+                                <td><input type="text" name="nama_pasien" placeholder="nama pasien" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>
-                                <td><input type="text" name="tanggal_lahir" placeholder="input_pasien" class="form-control" /></td>
+                                <td><input type="text" name="tanggal_lahir" placeholder="YY-MM-DD" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" name="alamat" placeholder="input_pasien" class="form-control" /></td>
+                                <td><input type="text" name="alamat" placeholder="alamat pasien" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><input type="text" name="email" placeholder="input_pasien" class="form-control" /></td>
+                                <td><input type="text" name="email" placeholder="email pasien" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Kontak</td>
-                                <td><input type="text" name="kontak" placeholder="input_pasien" class="form-control"/></td>
+                                <td><input type="text" name="kontak" placeholder="kontak pasien" class="form-control"/></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button type="button" id="btn-tambah" onclick="TambahPasien()"  class="btn-primary">Tamnbah</button>
+                                    <button type="button" id="btn-tambah" onclick="TambahPasien()"  class="btn-primary">Tambah</button>
 
                                     <button type="button" data-dismiss="modal" class="btn-primary">Batal</button>
                                 </td>
@@ -110,26 +100,26 @@
                       <center><font color="red"><p id="pesan"></p></font></center>
                         <table class="table">
                             <tr>
-                                <td>Nama Paseine</td>
-                                <td><input type="text" name="nama_pasien1" placeholder="input_pasien" class="form-control"  id="nama_pasien"/>
+                                <td>Nama Pasien</td>
+                                <td><input type="text" name="nama_pasien1" placeholder="nama pasien" class="form-control"  id="nama_pasien"/>
                                     <input type="text" name="id_pasien1" value="" readonly/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>
-                                <td><input type="text" name="tanggal_lahir1" placeholder="input_pasien" class="form-control" id="tanggal_lahir" /></td>
+                                <td><input type="text" name="tanggal_lahir1" placeholder="YY-MM-DD" class="form-control" id="tanggal_lahir" /></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" name="alamat1" placeholder="input_pasien" class="form-control" id="alamat" /></td>
+                                <td><input type="text" name="alamat1" placeholder="alamat pasien" class="form-control" id="alamat" /></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><input type="text" name="email1" placeholder="input_pasien" class="form-control" id="email" /></td>
+                                <td><input type="text" name="email1" placeholder="email pasien" class="form-control" id="email" /></td>
                             </tr>
                             <tr>
                                 <td>Kontak</td>
-                                <td><input type="text" name="kontak1" placeholder="input_pasien" class="form-control"  id="kontak" /></td>
+                                <td><input type="text" name="kontak1" placeholder="kontak pasien" class="form-control"  id="kontak" /></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -295,7 +285,7 @@
 
 
     function HapusData() {
-        var tanya = confirm('apakaha antum yakin menghapus data ini ???');
+        var tanya = confirm('Apakah Antum Yakin Menghapus Data Ini ???');
         var id_pasien=$(this).attr("id");
     if(tanya){
         $.ajax({

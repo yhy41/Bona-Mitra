@@ -16,8 +16,9 @@
                 </button>
             </div>
 
-    <div class="row mt-3">
-        <div class="col md-6">
+    <div class="row mt-5">
+        <div class="col">
+            <h3 class="text-center">Daftar Perawat</h3>
             <form id="form-search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari perawat ... " name="keyword">
@@ -26,12 +27,6 @@
                         </div>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col">
-            <h3 class="text-center">Daftar Perawat</h3>
             <br>
                 <a href="#form" data-toggle="modal" class="btn btn-primary" onclick="submit('tambah')">tambah data</a>
             </br>
@@ -60,20 +55,20 @@
                         <table class="table">
                             <tr>
                                 <td>Nama Perawat</td>
-                                <td><input type="text" name="nama_perawat" placeholder="input_nama" class="form-control" /></td>
+                                <td><input type="text" name="nama_perawat" placeholder="nama perawat" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" name="alamat" placeholder="input_alamat" class="form-control" /></td>
+                                <td><input type="text" name="alamat" placeholder="alamat perawat" class="form-control" /></td>
                             </tr>
                             <tr>
                                 <td>Kontak</td>
-                                <td><input type="text" name="kontak" placeholder="input_kontak" class="form-control"/></td>
+                                <td><input type="text" name="kontak" placeholder="kontak perawat" class="form-control"/></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button type="button" id="btn-tambah" onclick="TambahPerawat()"  class="btn-primary">Tamnbah</button>
+                                    <button type="button" id="btn-tambah" onclick="TambahPerawat()"  class="btn-primary">Tambah</button>
 
                                     <button type="button" data-dismiss="modal" class="btn-primary">Batal</button>
                                 </td>
@@ -97,17 +92,17 @@
                         <table class="table">
                             <tr>
                                 <td>Nama Perawat</td>
-                                <td><input type="text" name="nama_perawat1" placeholder="input_nama" class="form-control"  id="nama_pasien"/>
+                                <td><input type="text" name="nama_perawat1" placeholder="nama perawat" class="form-control"  id="nama_pasien"/>
                                     <input type="text" name="id_perawat1" value="" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" name="alamat1" placeholder="input_pasien" class="form-control" id="alamat" /></td>
+                                <td><input type="text" name="alamat1" placeholder="alamat perawat" class="form-control" id="alamat" /></td>
                             </tr>
                             <tr>
                                 <td>Kontak</td>
-                                <td><input type="text" name="kontak1" placeholder="input_pasien" class="form-control"  id="kontak" /></td>
+                                <td><input type="text" name="kontak1" placeholder="kontak perawat" class="form-control"  id="kontak" /></td>
                             </tr>
                             <tr>
                                 <td></td>

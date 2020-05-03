@@ -15,19 +15,6 @@
     </div>
     <?php endif; ?>
 
-    <div class="row mt-3">
-        <div class="col md-8">
-            <form action="" method="post">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari riwayat Rawat Inap ... " name="keyword">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Cari</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <div class="row mt-5">
     	<div class="col">
     		<h3 class="text-center">Riwayat Rawat Inap</h3>
@@ -36,6 +23,15 @@
                 Data tidak ditemukan
             </div>
             <?php endif; ?>
+
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cari riwayat Rawat Inap ... " name="keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
+                </div>
+            </form>
 
             <table class="table mt-6">
                 <thead>
