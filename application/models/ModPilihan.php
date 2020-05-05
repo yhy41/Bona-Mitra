@@ -127,6 +127,13 @@ public function TambahPerawat($data,$table)
 		return $this->db->like('nama_pasien', $params, 'both')->or_like('email', $params, 'both')->get('pasien');
 	}
 
+
+	function getAllKamarByKey($params)
+	{
+		//use query builder to get data table "mahasiswa"
+		return $this->db->like('nama_kamar', $params, 'both')->get('kamar_inap');
+	}
+
 	function getAllDokterByKey($params)
 	{
 		//use query builder to get data table "mahasiswa"

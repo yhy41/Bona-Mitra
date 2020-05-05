@@ -4,8 +4,7 @@
 
 <div class="container">
   <h3 class="text-center">Informasi Kamar</h3>
-    <div class="row mt-3">
-        <div class="col-md-6">
+   
            <div class="alert alert-success alert-dismissible" role="alert" style="display: none">
                 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -18,9 +17,8 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-        </div>
-    </div>
-
+            </div>
+ 
 
     <!-- <div class="row mt-">
         <div class="col md-4">
@@ -35,14 +33,16 @@
         </div>
     </div> -->
 
+
+
     <div class="row mt-5">
-        <div class="col">
-            <form action="" method="post">
+  
+          <form id="form-search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Cari nama Kamar ... " name="keyword">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Cari</button>
-                    </div>
+                    <input type="text" class="form-control" placeholder="Cari Kamar ... " name="keyword">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Cari</button>
+                        </div>
                 </div>
             </form>
             <br>
@@ -135,13 +135,13 @@
             dataType:'json',
             success: function(data){
                 var baris='';
-               for (var i=0; i<data.length; i++) {
+               for (var i=0; i<data.data.length; i++) {
                     baris += '<tr>'+
                                 '<td>'+(i+1)+'</td>'+
-                                '<td>'+data[i].nama_kamar+'</td>'+
+                                '<td>'+data.data[i].nama_kamar+'</td>'+
                                 
-                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data[i].id_kamar+'">ubah</a>     </td>'+
-                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data[i].id_kamar+'">hapus</a></td>'+
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_kamar+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_kamar+'">hapus</a></td>'+
                             '</tr>'
 
 // onclick="ubahdata('+data[i].id_pasien+')"        
@@ -266,6 +266,39 @@
     } 
 
 }
+
+
+
+  $('#form-search').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+                    type:'POST',
+                    url:'<?php echo base_url()?>index.php/Kamar/searchHandle',
+                    data: $('#form-search').serialize(),
+                    dataType:'json',
+                    success: function(data){
+                        var baris='';
+                     for (var i=0; i<data.data.length; i++) {
+                    baris += '<tr>'+
+                                '<td>'+(i+1)+'</td>'+
+                                '<td>'+data.data[i].nama_kamar+'</td>'+
+                                
+                                '<td><a href="#formUbah"  data-toggle="modal" class="btn btn-primary buttonubah" id="'+data.data[i].id_kamar+'">ubah</a>     </td>'+
+                                '<td><a href=""  data-toggle="modal" class="btn btn-primary buttonhapus" id="'+data.data[i].id_kamar+'">hapus</a></td>'+
+                            '</tr>'
+
+// onclick="ubahdata('+data[i].id_pasien+')"        
+
+                }
+                        $('#target-perawat').html(baris);
+                        $('.buttonubah').on('click',ubahdata);
+                        $('.buttonhapus').on('click',HapusData);
+
+
+                    }
+
+        });
+    });
 
 
 </script>

@@ -14,11 +14,31 @@ class kamar extends CI_Controller {
 	}
 	function LihatKamar()
 	{
-		$dataKamar = $this->m->getAllKamar('kamar_inap')->result();
-	
-		echo json_encode($dataKamar);
+
+        header('Content-Type: application/json');
+        $dataKamar = $this->m->getAllKamar('kamar_inap')->result();
+        $result = [
+            'status' => true,
+            'message' => 'data berhasil ditemukan',
+            'data' => $dataKamar
+        ];
+        echo json_encode($result);
 
 	}
+
+    function searchHandle() {
+        header('Content-Type: application/json');
+        $params = $this->input->post('keyword');
+
+        $dataKamar = $this->m->getAllKamarByKey($params)->result();
+
+        $result = [
+            'status' => true,
+            'message' => 'data berhasil dicari',
+            'data' => $dataKamar
+        ];
+        echo json_encode($result);
+    }
 	public function HapusKamar()
 	{
 		$id_kamar= $this->input->post("id_kamar");
